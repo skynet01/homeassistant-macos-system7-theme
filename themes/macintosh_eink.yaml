@@ -1,0 +1,2678 @@
+MacOS System 7 eink theme:
+  card-mod-theme: MacOS System 7 eink theme
+  uix-theme: MacOS System 7 eink theme
+
+  # UIX is the primary injection layer for current HA cards, rows and dialogs.
+  # Dual selectors retain support for custom cards with a divergent ha-card tree.
+  uix-card-yaml: |
+    ".": |
+      :host ha-card,
+      ha-card {
+        background: var(--card-background-color) !important;
+        border: var(--ha-card-border-width) solid var(--ha-card-border-color) !important;
+        border-radius: var(--ha-card-border-radius) !important;
+        box-shadow: var(--ha-card-box-shadow) !important;
+        color: var(--primary-text-color) !important;
+        font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+      }
+      :host(bar-card) ha-card,
+      :host(bubble-card) ha-card {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+      }
+      @media (max-width: 600px) {
+        #states > div > text-divider-row {
+          overflow: visible !important;
+        }
+      }
+      :host(bar-card) ha-card {
+        border-radius: var(--bar-card-border-radius) !important;
+        overflow: visible !important;
+      }
+      bar-card-value {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host(bubble-card) {
+        --bubble-border: none !important;
+        --bubble-card-type-border: none !important;
+        --bubble-card-type-box-shadow: none !important;
+      }
+      .bubble-sub-button:not(.bubble-sub-button-slider) {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host(bubble-card) .bubble-sub-button:not(.bubble-sub-button-slider):not(:has(
+        .bubble-sub-button-icon.show-icon:not(.hidden),
+        .bubble-sub-button-image:not(.hidden),
+        .bubble-sub-button-name-container:not(.hidden):not(:empty),
+        .bubble-dropdown-arrow:not(.hidden):not([style*="display: none"])
+      )) {
+        display: none !important;
+      }
+      :host(bubble-card) .bubble-range-slider {
+        background: var(--macintosh-progress-background) !important;
+      }
+      :host(bubble-card) .bubble-range-fill {
+        background: var(--macintosh-slider-active-color) !important;
+        opacity: 1 !important;
+      }
+      :host(mini-graph-card) ha-card {
+        padding-top: 0 !important;
+      }
+      :host(mini-graph-card) ha-card > .header {
+        align-items: flex-start !important;
+        background: var(--macintosh-titlebar-background) !important;
+        border-bottom: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        color: var(--macintosh-black) !important;
+        display: flex !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+        justify-content: center !important;
+        line-height: 17px !important;
+        margin: 0 0 12px !important;
+        min-height: 21px !important;
+        padding: 1px 22px 0 !important;
+        position: relative !important;
+      }
+      :host(mini-graph-card) ha-card > .header .icon {
+        position: absolute !important;
+        right: 16px !important;
+        top: calc(100% + 8px) !important;
+        z-index: 4 !important;
+      }
+      :host(mini-graph-card) ha-card > .header::before,
+      :host(mini-graph-card) ha-card > .header::after {
+        border: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        content: "" !important;
+        height: 12px !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: 2px !important;
+        width: 12px !important;
+        z-index: 2 !important;
+      }
+      :host(mini-graph-card) ha-card > .header::before {
+        background: var(--macintosh-surface) !important;
+        box-shadow: inset 1px 1px 0 var(--macintosh-light-gray) !important;
+        left: 3px !important;
+      }
+      :host(mini-graph-card) ha-card > .header::after {
+        background: var(--macintosh-titlebar-zoom-box) !important;
+        right: 3px !important;
+      }
+      :host(mini-graph-card) ha-card > .header .name {
+        background: var(--macintosh-title-label-background) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+        line-height: 17px !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+        position: relative !important;
+        z-index: 3 !important;
+      }
+      :host(mini-graph-card) ha-card > .header .name > span {
+        opacity: 1 !important;
+      }
+      :host(mini-media-player) ha-card.--has-artwork[artwork*="cover"] {
+        color: var(--mmp-text-color) !important;
+      }
+      :host(mini-graph-card) .state__value,
+      :host(mini-graph-card) .state__uom {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host(simple-weather-card) .weather__forecast {
+        border-top: 0 !important;
+      }
+      :host(simple-weather-card) .weather__info__title {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+      :host(hui-weather-forecast-card) ha-card,
+      :host(hui-gauge-card) .title,
+      :host(hui-sensor-card) .header,
+      :host(hui-sensor-card) .name,
+      :host(hui-sensor-card) .info,
+      :host(hui-sensor-card) .value,
+      :host(hui-sensor-card) .measurement {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+      :host([data-state="off"]) ha-state-icon,
+      ha-state-icon[data-state="off"],
+      ha-icon[data-state="off"] {
+        -webkit-mask-image: var(--macintosh-icon-dither) !important;
+        -webkit-mask-size: 2px 2px !important;
+        mask-image: var(--macintosh-icon-dither) !important;
+        mask-size: 2px 2px !important;
+      }
+      ha-radio-option {
+        --ha-radio-option-background-color: var(--macintosh-surface);
+        --ha-radio-option-border-color: var(--macintosh-black);
+        --ha-radio-option-border-width: 1px;
+        --ha-radio-option-checked-background-color: var(--macintosh-black);
+        --ha-radio-option-checked-icon-scale: 0;
+        --ha-radio-option-control-margin: 6px 10px 6px 0;
+        --ha-radio-option-toggle-size: 18px;
+      }
+      ha-radio-option::part(control) {
+        border-radius: 0 !important;
+        order: -1 !important;
+      }
+      ha-radio-option::part(label) {
+        order: 0 !important;
+      }
+      :host(bubble-card) .bubble-separator .bubble-name,
+      :host(bubble-card) .separator-container .bubble-name,
+      :host(mini-graph-card) ha-card > .header .name,
+      :host(mini-graph-card) ha-card > .header .name > span,
+      :host(simple-thermostat) .header__title {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+      }
+      :host(simple-thermostat) ha-card {
+        border-left: 0 !important;
+      }
+      :host(simple-thermostat) .current--value,
+      :host(simple-thermostat) .current--unit {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host ha-card > .card-header,
+      ha-card > .card-header {
+        align-items: flex-start !important;
+        background: var(--macintosh-titlebar-background) !important;
+        border-bottom: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        color: var(--macintosh-black) !important;
+        display: flex !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+        justify-content: center !important;
+        line-height: 17px !important;
+        margin: 0 0 12px !important;
+        min-height: 21px !important;
+        padding: 1px 22px 0 !important;
+        position: relative !important;
+      }
+      :host ha-card > .card-header::before,
+      :host ha-card > .card-header::after,
+      ha-card > .card-header::before,
+      ha-card > .card-header::after {
+        border: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        content: "" !important;
+        height: 12px !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: 2px !important;
+        width: 12px !important;
+        z-index: 2 !important;
+      }
+      :host ha-card > .card-header::before,
+      ha-card > .card-header::before {
+        background: var(--macintosh-surface) !important;
+        box-shadow: inset 1px 1px 0 var(--macintosh-light-gray) !important;
+        left: 3px !important;
+      }
+      :host ha-card > .card-header::after,
+      ha-card > .card-header::after {
+        background: var(--macintosh-titlebar-zoom-box) !important;
+        right: 3px !important;
+      }
+      :host ha-card > .card-header > .name,
+      ha-card > .card-header > .name {
+        background: var(--macintosh-title-label-background) !important;
+        color: var(--macintosh-black) !important;
+        display: table !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        line-height: 17px !important;
+        margin: 0 auto !important;
+        padding: 0 10px !important;
+        position: relative !important;
+        z-index: 3 !important;
+      }
+      button,
+      .mdc-button,
+      ha-button,
+      mwc-button {
+        border-radius: var(--macintosh-button-radius) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+    "ha-button $": |
+      [part~="base"] {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: var(--ha-button-box-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance~="accent"]) [part~="base"] {
+        background: var(--macintosh-surface) !important;
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-default-button-radius) !important;
+        box-shadow: var(--macintosh-default-button-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([size="s"]) [part~="base"] {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: 25px !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance="plain"]) [part~="base"],
+      :host([appearance~="plain"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+      }
+    "state-badge $": |
+      ha-state-icon[data-state="off"] {
+        -webkit-mask-image: var(--macintosh-icon-dither) !important;
+        -webkit-mask-size: 2px 2px !important;
+        mask-image: var(--macintosh-icon-dither) !important;
+        mask-size: 2px 2px !important;
+      }
+    "ha-gauge $": |
+      .value-text {
+        color: var(--macintosh-black) !important;
+        fill: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+    "ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          margin-inline-end: var(--macintosh-icon-button-gap) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "mmp-media-controls $":
+      "ha-slider $": |
+        #thumb {
+          background: var(--macintosh-surface) !important;
+          border: 1px solid var(--macintosh-black) !important;
+          box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        }
+    "text-divider-row $": |
+      .text-divider span {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+        line-height: 0 !important;
+      }
+    "&hui-horizontal-stack-card #root $$ ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "&hui-vertical-stack-card #root $$ ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "&stack-in-card": |
+      ha-card > div > * {
+        --card-background-color: transparent !important;
+        --ha-card-border-width: 0px !important;
+        --ha-card-box-shadow: none !important;
+      }
+    "&stack-in-card ha-card $": |
+      .card-header {
+        align-items: flex-start !important;
+        background: var(--macintosh-direct-titlebar-background) !important;
+        border-bottom: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        color: var(--macintosh-black) !important;
+        display: flex !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+        justify-content: center !important;
+        line-height: 17px !important;
+        margin: 0 0 12px !important;
+        min-height: 21px !important;
+        padding: 0 22px 4px !important;
+        position: relative !important;
+      }
+      .card-header::before,
+      .card-header::after {
+        border: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        content: "" !important;
+        height: 12px !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: 2px !important;
+        width: 12px !important;
+        z-index: 2 !important;
+      }
+      .card-header::before {
+        background: var(--macintosh-surface) !important;
+        box-shadow: inset 1px 1px 0 var(--macintosh-light-gray) !important;
+        left: 3px !important;
+      }
+      .card-header::after {
+        background: var(--macintosh-titlebar-zoom-box) !important;
+        right: 3px !important;
+      }
+    "&stack-in-card ha-card $$ ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "&vertical-stack-in-card": |
+      ha-card > div > * {
+        --card-background-color: transparent !important;
+        --ha-card-border-width: 0px !important;
+        --ha-card-box-shadow: none !important;
+      }
+    "&vertical-stack-in-card ha-card $": |
+      .card-header {
+        align-items: flex-start !important;
+        background: var(--macintosh-direct-titlebar-background) !important;
+        border-bottom: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        color: var(--macintosh-black) !important;
+        display: flex !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+        justify-content: center !important;
+        line-height: 17px !important;
+        margin: 0 0 12px !important;
+        min-height: 21px !important;
+        padding: 0 22px 4px !important;
+        position: relative !important;
+      }
+      .card-header::before,
+      .card-header::after {
+        border: 1px solid var(--macintosh-black) !important;
+        box-sizing: border-box !important;
+        content: "" !important;
+        height: 12px !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: 2px !important;
+        width: 12px !important;
+        z-index: 2 !important;
+      }
+      .card-header::before {
+        background: var(--macintosh-surface) !important;
+        box-shadow: inset 1px 1px 0 var(--macintosh-light-gray) !important;
+        left: 3px !important;
+      }
+      .card-header::after {
+        background: var(--macintosh-titlebar-zoom-box) !important;
+        right: 3px !important;
+      }
+    "&vertical-stack-in-card ha-card $$ ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+
+  uix-row-yaml: |
+    ".": |
+      :host {
+        border-radius: 4px !important;
+        color: var(--primary-text-color) !important;
+        font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+      }
+      :host(text-divider-row) {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+      :host(text-divider-row) .text-divider span {
+        line-height: 0 !important;
+      }
+      :host([data-state="off"]) ha-state-icon,
+      ha-state-icon[data-state="off"],
+      ha-icon[data-state="off"] {
+        -webkit-mask-image: var(--macintosh-icon-dither) !important;
+        -webkit-mask-size: 2px 2px !important;
+        mask-image: var(--macintosh-icon-dither) !important;
+        mask-size: 2px 2px !important;
+      }
+      ha-radio,
+      mwc-radio,
+      md-radio {
+        --mdc-radio-checked-color: var(--macintosh-black);
+        --mdc-radio-unchecked-color: var(--macintosh-black);
+        margin-inline-end: 10px !important;
+        margin-inline-start: 0 !important;
+        order: -3 !important;
+      }
+      ha-radio-option {
+        --ha-radio-option-background-color: var(--macintosh-surface);
+        --ha-radio-option-border-color: var(--macintosh-black);
+        --ha-radio-option-border-width: 1px;
+        --ha-radio-option-checked-background-color: var(--macintosh-black);
+        --ha-radio-option-checked-icon-scale: 0;
+        --ha-radio-option-control-margin: 6px 10px 6px 0;
+        --ha-radio-option-toggle-size: 18px;
+      }
+      ha-radio-option::part(control) {
+        border-radius: 0 !important;
+        order: -1 !important;
+      }
+      ha-radio-option::part(label) {
+        order: 0 !important;
+      }
+      :host(bar-card) ha-card {
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: var(--bar-card-border-radius) !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+      }
+      bar-card-background {
+        background: var(--macintosh-platinum) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--bar-card-border-radius) !important;
+        box-sizing: border-box !important;
+      }
+      bar-card-backgroundbar,
+      bar-card-currentbar,
+      bar-card-contentbar,
+      bar-card-targetbar,
+      bar-card-animationbar {
+        border-radius: var(--bar-card-border-radius) !important;
+      }
+      bar-card-backgroundbar {
+        background: var(--macintosh-progress-background) !important;
+        filter: none !important;
+        opacity: 1 !important;
+      }
+      bar-card-currentbar {
+        filter: none !important;
+        opacity: 0.72 !important;
+      }
+      bar-card-value {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+    "ha-button $": |
+      [part~="base"] {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: var(--ha-button-box-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance~="accent"]) [part~="base"] {
+        background: var(--macintosh-surface) !important;
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-default-button-radius) !important;
+        box-shadow: var(--macintosh-default-button-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([size="s"]) [part~="base"] {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: 25px !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance="plain"]) [part~="base"],
+      :host([appearance~="plain"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+      }
+    "ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          margin-inline-end: var(--macintosh-icon-button-gap) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "&hui-cover-entity-row":
+      "ha-cover-controls $":
+        "ha-icon-button $":
+          "ha-button $": |
+            :host([appearance="plain"]) [part~="base"],
+            :host([appearance~="plain"]) .button {
+              border: 2px solid var(--macintosh-black) !important;
+              border-radius: var(--macintosh-icon-button-radius) !important;
+              box-shadow: var(--macintosh-plain-button-shadow) !important;
+              height: var(--macintosh-icon-button-height) !important;
+            }
+    "ha-radio $": |
+      .mdc-radio,
+      .mdc-radio__background,
+      .mdc-radio__outer-circle,
+      .mdc-radio__inner-circle {
+        border-radius: 0 !important;
+      }
+      .mdc-radio__outer-circle {
+        background: var(--macintosh-surface) !important;
+        border-color: var(--macintosh-black) !important;
+      }
+      .mdc-radio__inner-circle {
+        border-color: var(--macintosh-black) !important;
+      }
+    "hui-generic-entity-row $": |
+      .row,
+      .wrapper {
+        border-radius: 4px !important;
+      }
+    "state-badge $": |
+      ha-state-icon[data-state="off"] {
+        -webkit-mask-image: var(--macintosh-icon-dither) !important;
+        -webkit-mask-size: 2px 2px !important;
+        mask-image: var(--macintosh-icon-dither) !important;
+        mask-size: 2px 2px !important;
+      }
+
+  uix-more-info-yaml: |
+    ".": |
+      :host,
+      ha-adaptive-dialog,
+      .content-wrapper,
+      .content {
+        background: var(--macintosh-surface) !important;
+        color: var(--primary-text-color) !important;
+        font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+      }
+      .title {
+        background: transparent !important;
+        display: flex !important;
+        flex-direction: column !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .title .main {
+        background: transparent !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+        line-height: 17px !important;
+        margin: 0 !important;
+        order: -1 !important;
+        padding: 0 !important;
+      }
+      .title .breadcrumb {
+        align-self: stretch !important;
+        background: transparent !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+        font-size: 12px !important;
+        line-height: 16px !important;
+        margin: 3px 0 0 !important;
+        order: 1 !important;
+        padding: 0 !important;
+        text-align: left !important;
+      }
+    "ha-button $": |
+      [part~="base"] {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: var(--ha-button-box-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance~="accent"]) [part~="base"] {
+        background: var(--macintosh-surface) !important;
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-default-button-radius) !important;
+        box-shadow: var(--macintosh-default-button-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([size="s"]) [part~="base"] {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: 25px !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance="plain"]) [part~="base"],
+      :host([appearance~="plain"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+      }
+    "ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          margin-inline-end: var(--macintosh-icon-button-gap) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "ha-more-info-info $":
+      "state-card-content $":
+        "state-card-number $":
+          "ha-slider $": |
+            #thumb {
+              background: var(--macintosh-surface) !important;
+              border: 1px solid var(--macintosh-black) !important;
+              box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+            }
+        "state-card-input_number $":
+          "ha-slider $": |
+            #thumb {
+              background: var(--macintosh-surface) !important;
+              border: 1px solid var(--macintosh-black) !important;
+              box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+            }
+      "more-info-content $":
+        "more-info-media_player $":
+          "ha-slider $": |
+            #thumb {
+              background: var(--macintosh-surface) !important;
+              border: 1px solid var(--macintosh-black) !important;
+              box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+            }
+      "ha-more-info-history $": |
+        h2 {
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+          font-weight: 400 !important;
+        }
+      "ha-more-info-logbook $": |
+        h2 {
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+          font-weight: 400 !important;
+        }
+    "ha-more-info-history-and-logbook $":
+      "ha-more-info-history $": |
+        h2 {
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+          font-weight: 400 !important;
+        }
+      "ha-more-info-logbook $": |
+        h2 {
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+          font-weight: 400 !important;
+        }
+
+  uix-dialog-yaml: |
+    ".": |
+      ha-adaptive-dialog,
+      ha-dialog,
+      ha-drawer {
+        --card-background-color: var(--macintosh-surface);
+        --dialog-box-shadow: 3px 3px 0 var(--macintosh-black);
+        --ha-dialog-border-radius: 0px;
+        --ha-dialog-header-title-color: var(--macintosh-black);
+        --ha-dialog-hide-duration: 0ms;
+        --ha-dialog-show-duration: 0ms;
+        --ha-dialog-surface-background: var(--macintosh-surface);
+        --primary-text-color: var(--macintosh-black);
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+      }
+      ha-radio-option {
+        --ha-radio-option-background-color: var(--macintosh-surface);
+        --ha-radio-option-border-color: var(--macintosh-black);
+        --ha-radio-option-border-width: 1px;
+        --ha-radio-option-checked-background-color: var(--macintosh-black);
+        --ha-radio-option-checked-icon-scale: 0;
+        --ha-radio-option-control-margin: 6px 10px 6px 0;
+        --ha-radio-option-toggle-size: 18px;
+      }
+      ha-radio-option::part(control) {
+        border-radius: 0 !important;
+        order: -1 !important;
+      }
+      ha-radio-option::part(label) {
+        order: 0 !important;
+      }
+    "ha-button $": |
+      [part~="base"] {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: var(--ha-button-box-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance~="accent"]) [part~="base"] {
+        background: var(--macintosh-surface) !important;
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-default-button-radius) !important;
+        box-shadow: var(--macintosh-default-button-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([size="s"]) [part~="base"] {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: 25px !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance="plain"]) [part~="base"],
+      :host([appearance~="plain"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+      }
+      :host([slot="primaryAction"]) [part~="base"],
+      :host([slot="primaryAction"]) .button,
+      :host([slot="secondaryAction"]) [part~="base"],
+      :host([slot="secondaryAction"]) .button {
+        background: var(--macintosh-surface) !important;
+        border-radius: var(--macintosh-default-button-radius) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        height: var(--macintosh-dialog-action-height) !important;
+        min-height: var(--macintosh-dialog-action-height) !important;
+      }
+      :host([slot="primaryAction"]) [part~="base"],
+      :host([slot="primaryAction"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        box-shadow: var(--macintosh-default-button-shadow) !important;
+      }
+      :host([slot="secondaryAction"]) [part~="base"],
+      :host([slot="secondaryAction"]) .button {
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        padding-inline: 16px !important;
+      }
+    "ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          margin-inline-end: var(--macintosh-icon-button-gap) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "&ha-adaptive-dialog $":
+      ".": |
+        ha-dialog {
+          --card-background-color: var(--macintosh-surface);
+          --dialog-box-shadow: 3px 3px 0 var(--macintosh-black);
+          --ha-dialog-border-radius: 0px;
+          --ha-dialog-surface-background: var(--macintosh-surface);
+        }
+      "ha-dialog $":
+        ".": |
+          wa-dialog::part(dialog) {
+            background: var(--macintosh-surface) !important;
+            border: 1px solid var(--macintosh-black) !important;
+            border-radius: 0 !important;
+            box-shadow: 3px 3px 0 var(--macintosh-black) !important;
+          }
+          .body,
+          .content-wrapper {
+            background: var(--macintosh-surface) !important;
+          }
+        "ha-dialog-header $": |
+          .header,
+          .header-bar {
+            background: var(--macintosh-surface) !important;
+            color: var(--macintosh-black) !important;
+          }
+          .header-bar {
+            min-height: 38px !important;
+            padding: 4px 8px !important;
+          }
+          .header-content {
+            align-items: stretch !important;
+            min-height: 28px !important;
+            padding: 3px 8px !important;
+          }
+          .header-title,
+          .header-title ::slotted(*) {
+            background: transparent !important;
+            color: var(--macintosh-black) !important;
+            font-family: var(--macintosh-title-font-family) !important;
+            font-size: var(--macintosh-dialog-title-font-size) !important;
+            font-weight: 400 !important;
+            height: auto !important;
+            line-height: 22px !important;
+            padding: 0 8px !important;
+            padding-inline-start: 0 !important;
+          }
+          .header-navigation-icon,
+          .header-action-items {
+            background: transparent !important;
+          }
+          .header-navigation-icon {
+            order: 1 !important;
+          }
+      "ha-icon-button $":
+        "ha-button $": &dialog_close_button_chrome |
+          :host([appearance="plain"]) [part~="base"],
+          :host([appearance~="plain"]) .button {
+            background: var(--macintosh-surface) !important;
+            border: 1px solid var(--macintosh-black) !important;
+            border-radius: 0 !important;
+            box-shadow: var(--ha-button-box-shadow) !important;
+            color: var(--macintosh-black) !important;
+            height: 24px !important;
+            min-height: 24px !important;
+            min-width: 24px !important;
+            width: 24px !important;
+          }
+    "&ha-dialog $":
+      ".": |
+        wa-dialog::part(dialog) {
+          background: var(--macintosh-surface) !important;
+          border: 1px solid var(--macintosh-black) !important;
+          border-radius: 0 !important;
+          box-shadow: 3px 3px 0 var(--macintosh-black) !important;
+        }
+      "ha-dialog-header $": |
+        .header,
+        .header-bar {
+          background: var(--macintosh-surface) !important;
+        }
+        .header-bar {
+          min-height: 38px !important;
+          padding: 4px 8px !important;
+        }
+        .header-content {
+          align-items: stretch !important;
+          min-height: 28px !important;
+          padding: 3px 8px !important;
+        }
+        .header-title,
+        .header-title ::slotted(*) {
+          background: transparent !important;
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+          font-size: var(--macintosh-dialog-title-font-size) !important;
+          font-weight: 400 !important;
+          padding: 0 8px !important;
+          padding-inline-start: 0 !important;
+        }
+        .header-navigation-icon,
+        .header-action-items {
+          background: transparent !important;
+        }
+        .header-navigation-icon {
+          order: 1 !important;
+        }
+      "ha-icon-button $":
+        "ha-button $": *dialog_close_button_chrome
+    "&ha-adaptive-dialog $$ ha-icon-button $": |
+      ha-button::part(base) {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        color: var(--macintosh-black) !important;
+      }
+    "&ha-dialog $$ ha-icon-button $": |
+      ha-button::part(base) {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        color: var(--macintosh-black) !important;
+      }
+    "&ha-adaptive-dialog $$ ha-button $": |
+      .button {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        color: var(--macintosh-black) !important;
+      }
+    "&ha-dialog $$ ha-button $": |
+      .button {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        color: var(--macintosh-black) !important;
+      }
+    "ha-labels-picker $":
+      "ha-button#picker $": |
+        :host(#picker) [part~="base"],
+        :host(#picker) .button {
+          background: var(--macintosh-surface) !important;
+          border: 1px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-button-radius) !important;
+          box-shadow: var(--ha-button-box-shadow) !important;
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+        }
+
+  # Global UIX paths cover frontend chrome and configuration pages, not a
+  # particular dashboard URL.
+  uix-root-yaml: |
+    ".": |
+      :host {
+        filter: var(--macintosh-global-filter, none) !important;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: var(--macintosh-placeholder-color) !important;
+        opacity: 1 !important;
+      }
+      .header {
+        inset-inline: var(--macintosh-header-start-offset, 0px) 0 !important;
+        width: auto !important;
+      }
+      .main-title {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+      }
+      .action-items {
+        gap: 6px !important;
+      }
+      .action-items ha-icon-button[slot="trigger"] {
+        inset-block-start: 3px !important;
+        position: relative !important;
+      }
+      .toolbar {
+        padding-inline-end: 12px !important;
+      }
+    "ha-button $": |
+      [part~="base"] {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: var(--ha-button-box-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance~="accent"]) [part~="base"] {
+        background: var(--macintosh-surface) !important;
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-default-button-radius) !important;
+        box-shadow: var(--macintosh-default-button-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([size="s"]) [part~="base"] {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: 25px !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance="plain"]) [part~="base"],
+      :host([appearance~="plain"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+      }
+    "hass-subpage $": |
+      .main-title {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-section-title-font-size) !important;
+        font-weight: 400 !important;
+        padding-inline-start: 8px !important;
+      }
+    ".action-items ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          background: var(--macintosh-surface) !important;
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: 2px 2px 0 var(--macintosh-black) !important;
+          color: var(--macintosh-black) !important;
+          height: var(--macintosh-icon-button-height) !important;
+        }
+    "ha-top-app-bar-fixed $": |
+      .title {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+      }
+    "ha-input $": |
+      wa-input::part(input)::placeholder {
+        color: var(--macintosh-placeholder-color) !important;
+        opacity: 1 !important;
+      }
+    "ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          margin-inline-end: var(--macintosh-icon-button-gap) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+      #track {
+        background: var(--macintosh-control) !important;
+      }
+      #indicator {
+        background: var(--macintosh-slider-active-color) !important;
+      }
+
+  uix-config-yaml: |
+    "ha-config-entities $$ ha-button $": &config_button_chrome |
+      [part~="base"] {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: var(--ha-button-box-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance="plain"]) [part~="base"],
+      :host([appearance~="plain"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+      }
+    "ha-config-integrations-dashboard $$ ha-button $": *config_button_chrome
+    "ha-config-entities $ hass-tabs-subpage-data-table $ ha-data-table $ ha-icon-button $":
+      "ha-button $": |
+        [part~="base"] {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+    "ha-button $": |
+      [part~="base"] {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: var(--ha-button-box-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance~="accent"]) [part~="base"] {
+        background: var(--macintosh-surface) !important;
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-default-button-radius) !important;
+        box-shadow: var(--macintosh-default-button-shadow) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([size="s"]) [part~="base"] {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: 25px !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host([appearance="plain"]) [part~="base"],
+      :host([appearance~="plain"]) .button {
+        border: 2px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+      }
+    "ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          margin-inline-end: var(--macintosh-icon-button-gap) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "hass-subpage $": |
+      .main-title {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-section-title-font-size) !important;
+        font-weight: 400 !important;
+        padding-inline-start: 8px !important;
+      }
+    "* $":
+      "hass-tabs-subpage-data-table $":
+        "ha-data-table $":
+          ".": |
+            .group-header {
+              color: var(--macintosh-black) !important;
+              font-family: var(--macintosh-title-font-family) !important;
+              font-size: var(--macintosh-section-title-font-size) !important;
+              font-weight: 400 !important;
+              padding-inline-start: 8px !important;
+            }
+            .group-header ha-icon-button {
+              margin-inline-end: 14px !important;
+              transition: transform 0.2s !important;
+            }
+      "ha-button $": |
+        [part~="base"] {
+          border: 1px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-button-radius) !important;
+          box-shadow: var(--ha-button-box-shadow) !important;
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+        }
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+        }
+      "* $$ ha-button $": |
+        [part~="base"] {
+          border: 1px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-button-radius) !important;
+          box-shadow: var(--ha-button-box-shadow) !important;
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+        }
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+        }
+    "ha-config-device-page $": |
+      .card-header,
+      .section-header {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+      }
+      .card-header ha-button {
+        --ha-button-border-radius: var(--macintosh-button-radius);
+        --ha-button-box-shadow: 1px 1px 0 var(--macintosh-black);
+      }
+      .card-header ha-button::part(base) {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-button-radius) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+    "ha-related-items $": |
+      h3 {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-title-font-size) !important;
+        font-weight: 400 !important;
+      }
+    "ha-config-integration-page $":
+      ".": |
+        .title h1,
+        .section-header {
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+          font-size: var(--macintosh-title-font-size) !important;
+          font-weight: 400 !important;
+          line-height: 20px !important;
+        }
+        ha-button::part(base) {
+          border: 1px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-button-radius) !important;
+          box-shadow: var(--ha-button-box-shadow) !important;
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+        }
+        ha-button[appearance~="accent"]::part(base) {
+          background: var(--macintosh-surface) !important;
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-default-button-radius) !important;
+          box-shadow: var(--macintosh-default-button-shadow) !important;
+        }
+      "ha-icon-button $": &config_icon_button_part_chrome |
+        ha-button::part(base) {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+        }
+      "ha-config-entry-row $":
+        ".": |
+          [slot="headline"] {
+            color: var(--macintosh-black) !important;
+            font-family: var(--macintosh-title-font-family) !important;
+            font-weight: 400 !important;
+          }
+        "ha-icon-button $": *config_icon_button_part_chrome
+        "ha-config-entry-device-row $":
+          "ha-icon-button $": *config_icon_button_part_chrome
+    "ha-config-integrations-dashboard $":
+      "ha-integration-card $":
+        "ha-integration-header $": |
+          .primary {
+            color: var(--macintosh-black) !important;
+            font-family: var(--macintosh-title-font-family) !important;
+            font-weight: 400 !important;
+          }
+  uix-sidebar-yaml: |
+    ".": |
+      :host(:not([expanded])) .menu > ha-icon-button {
+        margin-inline-start: 8px !important;
+      }
+      :host(:not([expanded])) ha-list-item-button {
+        border: 1px solid var(--macintosh-black) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        box-shadow: 1px 1px 1px var(--macintosh-black) !important;
+        margin-inline-start: 2px !important;
+      }
+    "ha-icon-button $":
+      "ha-button $": |
+        :host([appearance="plain"]) [part~="base"],
+        :host([appearance~="plain"]) .button {
+          border: 2px solid var(--macintosh-black) !important;
+          border-radius: var(--macintosh-icon-button-radius) !important;
+          box-shadow: var(--macintosh-plain-button-shadow) !important;
+          height: var(--macintosh-icon-button-height) !important;
+          margin-inline-end: var(--macintosh-icon-button-gap) !important;
+          width: var(--macintosh-icon-button-width) !important;
+        }
+
+  card-mod-root: |
+    :host,
+    ha-app-layout,
+    partial-panel-resolver,
+    #view {
+      color: #000000 !important;
+      font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+    }
+    :host,
+    ha-app-layout,
+    partial-panel-resolver {
+      background: var(--macintosh-platinum) !important;
+    }
+    :host {
+      filter: var(--macintosh-global-filter, none) !important;
+    }
+    #view {
+      background: var(--lovelace-background) !important;
+    }
+    app-header,
+    .header {
+      background: var(--macintosh-control) !important;
+      border-bottom: 1px solid #000000 !important;
+      box-shadow: none !important;
+      color: #000000 !important;
+    }
+    app-header .main-title,
+    app-toolbar .main-title,
+    ha-top-app-bar-fixed h1,
+    ha-top-app-bar-fixed h2 {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+    }
+    * {
+      animation: none !important;
+      scrollbar-color: #000000 #ffffff;
+      scrollbar-width: auto;
+      text-shadow: none !important;
+      transition: none !important;
+    }
+    *::-webkit-scrollbar {
+      background: #ffffff;
+      height: 16px;
+      width: 16px;
+    }
+    *::-webkit-scrollbar-track {
+      background: repeating-conic-gradient(
+        #000000 0 25%,
+        #ffffff 0 50%
+      ) 0 0 / 2px 2px;
+      border: 1px solid #000000;
+    }
+    *::-webkit-scrollbar-thumb {
+      background: #ffffff;
+      border: 1px solid #000000;
+      border-radius: 0;
+      box-shadow:
+        inset 1px 1px 0 #ffffff,
+        inset -1px -1px 0 #000000;
+    }
+    *::-webkit-scrollbar-corner {
+      background: #ffffff;
+      border: 1px solid #000000;
+    }
+    *::-webkit-scrollbar-button:single-button {
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+      border: 1px solid #000000;
+      display: block;
+      height: 16px;
+      width: 16px;
+    }
+    *::-webkit-scrollbar-button:single-button:vertical:decrement {
+      background-image:
+        linear-gradient(135deg, transparent 50%, #000000 50%),
+        linear-gradient(225deg, #000000 50%, transparent 50%);
+      background-position: 4px 7px, 8px 7px;
+      background-size: 4px 4px, 4px 4px;
+    }
+    *::-webkit-scrollbar-button:single-button:vertical:increment {
+      background-image:
+        linear-gradient(45deg, #000000 50%, transparent 50%),
+        linear-gradient(315deg, transparent 50%, #000000 50%);
+      background-position: 4px 5px, 8px 5px;
+      background-size: 4px 4px, 4px 4px;
+    }
+    *::-webkit-scrollbar-button:single-button:horizontal:decrement {
+      background-image:
+        linear-gradient(45deg, transparent 50%, #000000 50%),
+        linear-gradient(135deg, #000000 50%, transparent 50%);
+      background-position: 7px 4px, 7px 8px;
+      background-size: 4px 4px, 4px 4px;
+    }
+    *::-webkit-scrollbar-button:single-button:horizontal:increment {
+      background-image:
+        linear-gradient(225deg, transparent 50%, #000000 50%),
+        linear-gradient(315deg, #000000 50%, transparent 50%);
+      background-position: 5px 4px, 5px 8px;
+      background-size: 4px 4px, 4px 4px;
+    }
+
+  card-mod-sidebar: |
+    :host,
+    .menu,
+    .sidebar {
+      background: var(--macintosh-control) !important;
+      color: #000000 !important;
+      font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+    }
+    a,
+    .iron-selected {
+      border-radius: 0 !important;
+      color: #000000 !important;
+    }
+    .iron-selected {
+      background: #000000 !important;
+      color: #ffffff !important;
+    }
+    .badge {
+      color: var(--macintosh-badge-text-color) !important;
+    }
+    .title {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-title-font-size) !important;
+      font-weight: 400 !important;
+    }
+    :host(:not([expanded])) .menu > ha-icon-button {
+      margin-inline-start: 8px !important;
+    }
+    :host(:not([expanded])) ha-list-item-button {
+      border: 1px solid var(--macintosh-black) !important;
+      border-radius: var(--macintosh-icon-button-radius) !important;
+      box-shadow: 1px 1px 1px var(--macintosh-black) !important;
+      margin-inline-start: 2px !important;
+    }
+
+  card-mod-dialog: |
+    :host,
+    ha-dialog,
+    .mdc-dialog__surface {
+      background: var(--macintosh-surface) !important;
+      border: var(--ha-card-border-width) solid var(--ha-card-border-color) !important;
+      border-radius: 0 !important;
+      box-shadow: 3px 3px 0 #000000 !important;
+      color: #000000 !important;
+      font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+    }
+    [slot="heading"],
+    .mdc-dialog__title {
+      background: transparent !important;
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-dialog-title-font-size) !important;
+      font-weight: 400 !important;
+      line-height: 22px !important;
+    }
+    ha-radio-option {
+      --ha-radio-option-background-color: var(--macintosh-surface);
+      --ha-radio-option-border-color: #000000;
+      --ha-radio-option-border-width: 1px;
+      --ha-radio-option-checked-background-color: #000000;
+      --ha-radio-option-checked-icon-scale: 0;
+      --ha-radio-option-control-margin: 6px 10px 6px 0;
+      --ha-radio-option-toggle-size: 18px;
+    }
+    ha-radio-option::part(control) {
+      border-radius: 0 !important;
+      order: -1 !important;
+    }
+    ha-radio-option::part(label) {
+      order: 0 !important;
+    }
+
+  card-mod-more-info: |
+    :host {
+      background: var(--macintosh-surface) !important;
+      color: #000000 !important;
+      font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+    }
+    .title {
+      background: transparent !important;
+      display: flex !important;
+      flex-direction: column !important;
+      margin: 0 !important;
+      width: 100% !important;
+    }
+    .title .main {
+      background: transparent !important;
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-title-font-size) !important;
+      font-weight: 400 !important;
+      line-height: 17px !important;
+      margin: 0 !important;
+      order: -1 !important;
+      padding: 0 !important;
+    }
+    .title .breadcrumb {
+      align-self: stretch !important;
+      background: transparent !important;
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+      font-size: 12px !important;
+      line-height: 16px !important;
+      margin: 3px 0 0 !important;
+      order: 1 !important;
+      padding: 0 !important;
+      text-align: left !important;
+    }
+
+  card-mod-view: |
+    .mdc-data-table__cell.group-header,
+    .group-header {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-section-title-font-size) !important;
+      font-weight: 400 !important;
+      padding-inline-start: 8px !important;
+    }
+    .group-header ha-icon-button {
+      margin-inline-end: 14px !important;
+      transition: transform 0.2s !important;
+    }
+  card-mod-card: |
+    :host ha-card,
+    ha-card {
+      background: var(--card-background-color) !important;
+      border: var(--ha-card-border-width) solid var(--ha-card-border-color) !important;
+      border-radius: 0 !important;
+      box-shadow: var(--ha-card-box-shadow) !important;
+      color: #000000 !important;
+      font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+    }
+    :host(bar-card) ha-card,
+    :host(bubble-card) ha-card {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+    :host(bar-card) ha-card {
+      border-radius: var(--bar-card-border-radius) !important;
+      overflow: visible !important;
+    }
+    bar-card-value {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+    }
+    :host(bubble-card) {
+      --bubble-border: none !important;
+      --bubble-card-type-border: none !important;
+      --bubble-card-type-box-shadow: none !important;
+    }
+    .bubble-sub-button:not(.bubble-sub-button-slider) {
+      border: 1px solid var(--macintosh-black) !important;
+      border-radius: var(--macintosh-button-radius) !important;
+      box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+    }
+    :host(bubble-card) .bubble-sub-button:not(.bubble-sub-button-slider):not(:has(
+      .bubble-sub-button-icon.show-icon:not(.hidden),
+      .bubble-sub-button-image:not(.hidden),
+      .bubble-sub-button-name-container:not(.hidden):not(:empty),
+      .bubble-dropdown-arrow:not(.hidden):not([style*="display: none"])
+    )) {
+      display: none !important;
+    }
+    :host(bubble-card) .bubble-range-slider {
+      background: var(--macintosh-progress-background) !important;
+    }
+    :host(bubble-card) .bubble-range-fill {
+      background: var(--macintosh-slider-active-color) !important;
+      opacity: 1 !important;
+    }
+    :host(mini-graph-card) ha-card {
+      padding-top: 0 !important;
+    }
+    :host(mini-graph-card) ha-card > .header {
+      align-items: flex-start !important;
+      background: var(--macintosh-titlebar-background) !important;
+      border-bottom: 1px solid var(--macintosh-black) !important;
+      box-sizing: border-box !important;
+      color: var(--macintosh-black) !important;
+      display: flex !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-title-font-size) !important;
+      font-weight: 400 !important;
+      justify-content: center !important;
+      line-height: 17px !important;
+      margin: 0 0 12px !important;
+      min-height: 21px !important;
+      padding: 1px 22px 0 !important;
+      position: relative !important;
+    }
+    :host(mini-graph-card) ha-card > .header .icon {
+      position: absolute !important;
+      right: 16px !important;
+      top: calc(100% + 8px) !important;
+      z-index: 4 !important;
+    }
+    :host(mini-graph-card) ha-card > .header::before,
+    :host(mini-graph-card) ha-card > .header::after {
+      border: 1px solid var(--macintosh-black) !important;
+      box-sizing: border-box !important;
+      content: "" !important;
+      height: 12px !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      top: 2px !important;
+      width: 12px !important;
+      z-index: 2 !important;
+    }
+    :host(mini-graph-card) ha-card > .header::before {
+      background: var(--macintosh-surface) !important;
+      box-shadow: inset 1px 1px 0 var(--macintosh-light-gray) !important;
+      left: 3px !important;
+    }
+    :host(mini-graph-card) ha-card > .header::after {
+      background: var(--macintosh-titlebar-zoom-box) !important;
+      right: 3px !important;
+    }
+    :host(mini-graph-card) ha-card > .header .name {
+      background: var(--macintosh-title-label-background) !important;
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-title-font-size) !important;
+      font-weight: 400 !important;
+      line-height: 17px !important;
+      margin: 0 auto !important;
+      padding: 0 10px !important;
+      position: relative !important;
+      z-index: 3 !important;
+    }
+    :host(mini-graph-card) ha-card > .header .name > span {
+      opacity: 1 !important;
+    }
+    :host(mini-media-player) ha-card.--has-artwork[artwork*="cover"] {
+      color: var(--mmp-text-color) !important;
+    }
+    :host(mini-graph-card) .state__value,
+    :host(mini-graph-card) .state__uom {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+    }
+    :host(simple-weather-card) .weather__forecast {
+      border-top: 0 !important;
+    }
+    :host(simple-weather-card) .weather__info__title {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-weight: 400 !important;
+    }
+    :host(hui-weather-forecast-card) ha-card,
+    :host(hui-sensor-card) .header,
+    :host(hui-sensor-card) .name,
+    :host(hui-sensor-card) .info,
+    :host(hui-sensor-card) .value,
+    :host(hui-sensor-card) .measurement {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-weight: 400 !important;
+    }
+    :host([data-state="off"]) ha-state-icon,
+    ha-state-icon[data-state="off"],
+    ha-icon[data-state="off"] {
+      -webkit-mask-image: var(--macintosh-icon-dither) !important;
+      -webkit-mask-size: 2px 2px !important;
+      mask-image: var(--macintosh-icon-dither) !important;
+      mask-size: 2px 2px !important;
+    }
+    ha-radio-option {
+      --ha-radio-option-background-color: var(--macintosh-surface);
+      --ha-radio-option-border-color: var(--macintosh-black);
+      --ha-radio-option-border-width: 1px;
+      --ha-radio-option-checked-background-color: var(--macintosh-black);
+      --ha-radio-option-checked-icon-scale: 0;
+      --ha-radio-option-control-margin: 6px 10px 6px 0;
+      --ha-radio-option-toggle-size: 18px;
+    }
+    ha-radio-option::part(control) {
+      border-radius: 0 !important;
+      order: -1 !important;
+    }
+    ha-radio-option::part(label) {
+      order: 0 !important;
+    }
+    :host(bubble-card) .bubble-separator .bubble-name,
+    :host(bubble-card) .separator-container .bubble-name,
+    :host(simple-thermostat) .header__title {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-title-font-size) !important;
+      font-weight: 400 !important;
+    }
+    :host(simple-thermostat) ha-card {
+      border-left: 0 !important;
+    }
+    :host(simple-thermostat) .current--value,
+    :host(simple-thermostat) .current--unit {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+    }
+    :host ha-card > header,
+    :host ha-card > .card-header,
+    ha-card > header,
+    ha-card > .card-header {
+      align-items: flex-start !important;
+      background: var(--macintosh-titlebar-background) !important;
+      border-bottom: 1px solid #000000 !important;
+      color: var(--macintosh-black) !important;
+      display: flex !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-title-font-size) !important;
+      font-weight: 400 !important;
+      justify-content: center !important;
+      line-height: 17px !important;
+      margin: 0 0 12px !important;
+      min-height: 21px !important;
+      padding: 1px 22px 0 !important;
+      position: relative !important;
+    }
+    :host ha-card > header::before,
+    :host ha-card > header::after,
+    :host ha-card > .card-header::before,
+    :host ha-card > .card-header::after,
+    ha-card > header::before,
+    ha-card > header::after,
+    ha-card > .card-header::before,
+    ha-card > .card-header::after {
+      border: 1px solid #000000 !important;
+      box-sizing: border-box !important;
+      content: "" !important;
+      height: 12px !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      top: 2px !important;
+      width: 12px !important;
+      z-index: 2 !important;
+    }
+    :host ha-card > header::before,
+    :host ha-card > .card-header::before,
+    ha-card > header::before,
+    ha-card > .card-header::before {
+      background: var(--macintosh-surface) !important;
+      box-shadow: inset 1px 1px 0 var(--macintosh-light-gray) !important;
+      left: 3px !important;
+    }
+    :host ha-card > header::after,
+    :host ha-card > .card-header::after,
+    ha-card > header::after,
+    ha-card > .card-header::after {
+      background: var(--macintosh-titlebar-zoom-box) !important;
+      right: 3px !important;
+    }
+    :host ha-card > .card-header > .name,
+    ha-card > .card-header > .name,
+    ha-card > header > div > h2,
+    header h2 {
+      background: var(--macintosh-title-label-background) !important;
+      color: var(--macintosh-black) !important;
+      display: table !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-weight: 400 !important;
+      line-height: 17px !important;
+      margin: 0 auto !important;
+      padding: 0 10px !important;
+      position: relative !important;
+      z-index: 3 !important;
+    }
+    .mdc-data-table__cell.group-header,
+    .group-header {
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-size: var(--macintosh-section-title-font-size) !important;
+      font-weight: 400 !important;
+      padding-inline-start: 8px !important;
+    }
+    button,
+    .mdc-button,
+    ha-button,
+    mwc-button {
+      background: #ffffff !important;
+      border: 1px solid #000000 !important;
+      border-radius: var(--macintosh-button-radius) !important;
+      box-shadow: 1px 1px 0 #000000 !important;
+      color: var(--macintosh-black) !important;
+      font-family: var(--macintosh-title-font-family) !important;
+      font-weight: 400 !important;
+    }
+    * {
+      animation: none !important;
+      text-shadow: none !important;
+      transition: none !important;
+    }
+  card-mod-card-yaml: |
+    ".": |
+      :host(hui-gauge-card) .title {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+    "ha-gauge $": |
+      .value-text {
+        color: var(--macintosh-black) !important;
+        fill: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "mmp-media-controls $":
+      "ha-slider $": |
+        #thumb {
+          background: var(--macintosh-surface) !important;
+          border: 1px solid var(--macintosh-black) !important;
+          box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+        }
+    "text-divider-row $": |
+      .text-divider span {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+        line-height: 0 !important;
+      }
+    "state-badge $": |
+      ha-state-icon[data-state="off"] {
+        -webkit-mask-image: var(--macintosh-icon-dither) !important;
+        -webkit-mask-size: 2px 2px !important;
+        mask-image: var(--macintosh-icon-dither) !important;
+        mask-size: 2px 2px !important;
+      }
+    "ha-data-table $": |
+      .mdc-data-table__header-row {
+        background-color: #ffffff !important;
+      }
+      .mdc-data-table__header-cell,
+      .mdc-data-table__cell.group-header,
+      .group-header {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-size: var(--macintosh-section-title-font-size) !important;
+        font-weight: 400 !important;
+        padding-inline-start: 8px !important;
+      }
+    "* $":
+      "ha-data-table $": |
+        .mdc-data-table__header-row {
+          background-color: #ffffff !important;
+        }
+        .mdc-data-table__header-cell,
+        .mdc-data-table__cell.group-header,
+        .group-header {
+          color: var(--macintosh-black) !important;
+          font-family: var(--macintosh-title-font-family) !important;
+          font-size: var(--macintosh-section-title-font-size) !important;
+          font-weight: 400 !important;
+          padding-inline-start: 8px !important;
+        }
+
+  card-mod-row-yaml: |
+    ".": |
+      :host,
+      .wrapper {
+        color: #000000 !important;
+        font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
+      }
+      bar-card-value {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+      }
+      :host(text-divider-row) {
+        color: var(--macintosh-black) !important;
+        font-family: var(--macintosh-title-font-family) !important;
+        font-weight: 400 !important;
+      }
+      :host(text-divider-row) .text-divider span {
+        line-height: 0 !important;
+      }
+      :host([data-state="off"]) ha-state-icon,
+      ha-state-icon[data-state="off"],
+      ha-icon[data-state="off"] {
+        -webkit-mask-image: var(--macintosh-icon-dither) !important;
+        -webkit-mask-size: 2px 2px !important;
+        mask-image: var(--macintosh-icon-dither) !important;
+        mask-size: 2px 2px !important;
+      }
+      ha-radio,
+      mwc-radio,
+      md-radio {
+        --mdc-radio-checked-color: #000000;
+        --mdc-radio-unchecked-color: #000000;
+        margin-inline-end: 10px !important;
+        margin-inline-start: 0 !important;
+        order: -3 !important;
+      }
+      ha-radio-option {
+        --ha-radio-option-background-color: var(--macintosh-surface);
+        --ha-radio-option-border-color: #000000;
+        --ha-radio-option-border-width: 1px;
+        --ha-radio-option-checked-background-color: #000000;
+        --ha-radio-option-checked-icon-scale: 0;
+        --ha-radio-option-control-margin: 6px 10px 6px 0;
+        --ha-radio-option-toggle-size: 18px;
+      }
+      ha-radio-option::part(control) {
+        border-radius: 0 !important;
+        order: -1 !important;
+      }
+      ha-radio-option::part(label) {
+        order: 0 !important;
+      }
+      .wrapper {
+        align-items: center !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+      }
+      .wrapper > ha-switch,
+      .wrapper > ha-control-switch,
+      ha-switch,
+      ha-control-switch {
+        margin-left: 0 !important;
+        margin-right: 10px !important;
+        order: -2 !important;
+      }
+      .wrapper > .state,
+      .state {
+        color: #000000 !important;
+        margin-left: 0 !important;
+        margin-right: 10px !important;
+        order: -1 !important;
+        text-align: left !important;
+      }
+      .wrapper > .info,
+      .info {
+        margin-left: 0 !important;
+        order: 1 !important;
+      }
+      div.wrapper ha-slider {
+        margin-left: 0 !important;
+        margin-right: 14px !important;
+        order: -2 !important;
+      }
+      ha-slider {
+        --ha-slider-indicator-color: var(--macintosh-slider-active-color) !important;
+        --ha-slider-thumb-color: #ffffff !important;
+        --ha-slider-track-color: var(--macintosh-control) !important;
+        --md-slider-active-track-color: var(--macintosh-slider-active-color) !important;
+        --md-slider-focus-handle-color: #ffffff !important;
+        --md-slider-handle-color: #ffffff !important;
+        --md-slider-handle-elevation: 1px 1px 0 #000000 !important;
+        --md-slider-handle-shadow-color: #000000 !important;
+        --md-slider-handle-shape: 50% !important;
+        --md-slider-hover-handle-color: #ffffff !important;
+        --md-slider-inactive-track-color: var(--macintosh-control) !important;
+        --md-slider-pressed-handle-color: #ffffff !important;
+      }
+    "ha-switch $": |
+      .switch,
+      .switch .thumb,
+      .mdc-switch,
+      .mdc-switch__track,
+      .mdc-switch__thumb {
+        border-radius: 0 !important;
+      }
+      .switch {
+        border: 1px solid #000000 !important;
+      }
+      .switch .thumb {
+        box-shadow: none !important;
+      }
+    "ha-icon-button $": |
+      ha-button::part(base) {
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: var(--macintosh-plain-button-shadow) !important;
+        height: var(--macintosh-icon-button-height) !important;
+        width: var(--macintosh-icon-button-width) !important;
+        border-radius: var(--macintosh-icon-button-radius) !important;
+        margin-inline-end: var(--macintosh-icon-button-gap) !important;
+      }
+    "ha-slider $": |
+      #thumb {
+        background: var(--macintosh-surface) !important;
+        border: 1px solid var(--macintosh-black) !important;
+        box-shadow: 1px 1px 0 var(--macintosh-black) !important;
+      }
+    "ha-control-switch $": |
+      .switch,
+      .background,
+      .button {
+        border-radius: 0 !important;
+      }
+      .switch {
+        border: 1px solid #000000 !important;
+      }
+    "ha-radio $": |
+      .mdc-radio,
+      .mdc-radio__background,
+      .mdc-radio__outer-circle,
+      .mdc-radio__inner-circle {
+        border-radius: 0 !important;
+      }
+      .mdc-radio__outer-circle {
+        background: #ffffff !important;
+        border-color: #000000 !important;
+      }
+      .mdc-radio__inner-circle {
+        border-color: #000000 !important;
+      }
+    "hui-generic-entity-row $": |
+      .row {
+        justify-content: flex-start !important;
+      }
+      .row > slot,
+      .row > .value {
+        flex: 0 0 auto !important;
+        margin-inline-end: 10px !important;
+        margin-inline-start: 0 !important;
+        order: -3 !important;
+        text-align: left !important;
+      }
+      .row > state-badge {
+        order: -2 !important;
+      }
+      .row > .info {
+        order: -1 !important;
+      }
+      .state {
+        text-align: left !important;
+      }
+    "state-badge $": |
+      ha-state-icon[data-state="off"] {
+        -webkit-mask-image: var(--macintosh-icon-dither) !important;
+        -webkit-mask-size: 2px 2px !important;
+        mask-image: var(--macintosh-icon-dither) !important;
+        mask-size: 2px 2px !important;
+      }
+
+  # System 7 grayscale ramp and 50% one-bit ordered-dither desktop.
+  macintosh-black: "#000000"
+  macintosh-dark-gray: "#5e5e5e"
+  macintosh-mid-gray: "#8c8c8c"
+  macintosh-light-gray: "#b8b8b8"
+  macintosh-platinum: "#d8d8d8"
+  macintosh-control: "#ececec"
+  macintosh-button-radius: "6px"
+  macintosh-default-button-radius: "30px"
+  macintosh-default-button-shadow: "inset 0 0 0 2px var(--macintosh-surface), inset 0 0 0 3px var(--macintosh-black), 2px 2px 0 var(--macintosh-black)"
+  macintosh-dialog-action-height: "40px"
+  macintosh-plain-button-shadow: "2px 2px 0 var(--macintosh-black)"
+  macintosh-icon-button-height: "27px"
+  macintosh-icon-button-width: "31px"
+  macintosh-icon-button-radius: "5px"
+  macintosh-icon-button-gap: "5px"
+  macintosh-progress-background: "repeating-conic-gradient(var(--macintosh-platinum) 0 25%, var(--macintosh-control) 0 50%) 0 0 / 2px 2px"
+  macintosh-progress-fill: "repeating-conic-gradient(var(--macintosh-dark-gray) 0 25%, var(--macintosh-mid-gray) 0 50%) 0 0 / 2px 2px"
+  macintosh-icon-dither: "repeating-conic-gradient(#000000 0 25%, transparent 0 50%)"
+  macintosh-surface: "#f7f7f7"
+  macintosh-global-filter: "grayscale(1)"
+  macintosh-header-start-offset: "0px"
+  macintosh-placeholder-color: "#5e5e5e"
+  macintosh-badge-text-color: "#ffffff"
+  macintosh-slider-active-color: var(--macintosh-mid-gray)
+  macintosh-titlebar-background: "linear-gradient(to bottom, #ffffff 0 3px, transparent 3px 16px, #ffffff 16px 100%), repeating-linear-gradient(to bottom, #f7f7f7 0, #f7f7f7 1px, #777777 1px, #777777 2px, #f7f7f7 2px, #f7f7f7 3px)"
+  macintosh-title-label-background: "#ffffff"
+  macintosh-direct-titlebar-background: "linear-gradient(var(--macintosh-title-label-background), var(--macintosh-title-label-background)) center / min(11em, calc(100% - 44px)) 17px no-repeat, var(--macintosh-titlebar-background)"
+  macintosh-titlebar-zoom-box: "linear-gradient(#000000, #000000) 2px 2px / 7px 1px no-repeat, linear-gradient(#000000, #000000) 2px 2px / 1px 7px no-repeat, #f7f7f7"
+  macintosh-dialog-title-font-size: "18px"
+  lovelace-background: "repeating-conic-gradient(#000000 0 25%, #ffffff 0 50%) 0 0 / 4px 4px"
+  accent-color: "#000000"
+  text-accent-color: "#ffffff"
+
+  #Header
+  app-header-background-color: "#ececec"
+  app-header-text-color: "#000000"
+  ha-view-sections-column-gap: "20px"
+  ha-view-sections-row-gap: "20px"
+  ha-view-sections-narrow-column-gap: "20px"
+  masonry-view-card-margin: "10px"
+  stack-card-gap: "20px"
+  horizontal-stack-card-gap: var(--stack-card-gap)
+  vertical-stack-card-gap: var(--stack-card-gap)
+
+  #Fonts
+  macintosh-body-font-family: 'GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif'
+  primary-font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  macintosh-title-font-family: 'ChicagoWeb, Chicago, Charcoal, GenevaSystem, Geneva, sans-serif'
+  macintosh-title-font-size: "15px"
+  macintosh-section-title-font-size: "18px"
+  ha-font-family-body: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  ha-font-family-heading: "var(--macintosh-title-font-family)"
+  ha-font-family-code: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  ha-font-family-longform: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  mdc-typography-font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  mdc-typography-button-font-family: "var(--macintosh-title-font-family)"
+  mdc-typography-body1-font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  md-list-item-label-text-font: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  title-font-family: "var(--macintosh-title-font-family)"
+  title-font-size: "var(--macintosh-title-font-size)"
+  ha-heading-card-title-font-family: "var(--macintosh-title-font-family)"
+  ha-heading-card-title-font-size: "var(--macintosh-title-font-size)"
+  paper-font-common-base_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-common-code_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-body1_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-subhead_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-headline_-_font-family: "var(--macintosh-title-font-family)"
+  paper-font-caption_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-title_-_font-family: "var(--macintosh-title-font-family)"
+  ha-card-header-font-family: "var(--macintosh-title-font-family)"
+
+  # Main Interface Colors
+  primary-color: "#000000"
+  dark-primary-color: "#000000"
+  darker-primary-color: "#000000"
+  light-primary-color: var(--primary-color)
+  primary-background-color: "#d8d8d8"
+  secondary-background-color: "#ececec"
+  clear-background-color: "#f7f7f7"
+  divider-color: "#000000"
+  outline-color: "#000000"
+  outline-hover-color: "#000000"
+  scrollbar-thumb-color: "#000000"
+  black-color: "#000000"
+  white-color: "#ffffff"
+  red-color: "#303030"
+  pink-color: "#3a3a3a"
+  purple-color: "#444444"
+  deep-purple-color: "#4e4e4e"
+  indigo-color: "#585858"
+  blue-color: "#626262"
+  light-blue-color: "#6c6c6c"
+  cyan-color: "#767676"
+  teal-color: "#808080"
+  green-color: "#8a8a8a"
+  light-green-color: "#949494"
+  lime-color: "#9e9e9e"
+  yellow-color: "#a8a8a8"
+  amber-color: "#929292"
+  orange-color: "#727272"
+  deep-orange-color: "#565656"
+  brown-color: "#666666"
+  light-grey-color: "#b8b8b8"
+  grey-color: "#8c8c8c"
+  dark-grey-color: "#5e5e5e"
+  blue-grey-color: "#777777"
+
+  # Home Assistant 2025+ core color palette
+  ha-color-primary-05: "#000000"
+  ha-color-primary-10: "#000000"
+  ha-color-primary-20: "#000000"
+  ha-color-primary-30: "#000000"
+  ha-color-primary-40: "#000000"
+  ha-color-primary-50: "#000000"
+  ha-color-primary-60: "#ffffff"
+  ha-color-primary-70: "#ffffff"
+  ha-color-primary-80: "#ffffff"
+  ha-color-primary-90: "#ffffff"
+  ha-color-primary-95: "#ffffff"
+
+  ha-color-neutral-05: "#000000"
+  ha-color-neutral-10: "#000000"
+  ha-color-neutral-20: "#000000"
+  ha-color-neutral-30: "#000000"
+  ha-color-neutral-40: "#000000"
+  ha-color-neutral-50: "#000000"
+  ha-color-neutral-60: var(--macintosh-placeholder-color)
+  ha-color-neutral-70: "#ffffff"
+  ha-color-neutral-80: "#ffffff"
+  ha-color-neutral-90: "#ffffff"
+  ha-color-neutral-95: "#ffffff"
+
+  ha-color-orange-05: "#000000"
+  ha-color-orange-10: "#000000"
+  ha-color-orange-20: "#000000"
+  ha-color-orange-30: "#000000"
+  ha-color-orange-40: "#000000"
+  ha-color-orange-50: "#000000"
+  ha-color-orange-60: "#ffffff"
+  ha-color-orange-70: "#ffffff"
+  ha-color-orange-80: "#ffffff"
+  ha-color-orange-90: "#ffffff"
+  ha-color-orange-95: "#ffffff"
+
+  ha-color-red-05: "#000000"
+  ha-color-red-10: "#000000"
+  ha-color-red-20: "#000000"
+  ha-color-red-30: "#000000"
+  ha-color-red-40: "#000000"
+  ha-color-red-50: "#000000"
+  ha-color-red-60: "#ffffff"
+  ha-color-red-70: "#ffffff"
+  ha-color-red-80: "#ffffff"
+  ha-color-red-90: "#ffffff"
+  ha-color-red-95: "#ffffff"
+
+  ha-color-green-05: "#000000"
+  ha-color-green-10: "#000000"
+  ha-color-green-20: "#000000"
+  ha-color-green-30: "#000000"
+  ha-color-green-40: "#000000"
+  ha-color-green-50: "#000000"
+  ha-color-green-60: "#ffffff"
+  ha-color-green-70: "#ffffff"
+  ha-color-green-80: "#ffffff"
+  ha-color-green-90: "#ffffff"
+  ha-color-green-95: "#ffffff"
+
+  # Home Assistant 2025+ semantic colors
+  ha-color-focus: "#000000"
+  ha-color-text-primary: var(--primary-text-color)
+  ha-color-text-secondary: var(--secondary-text-color)
+  ha-color-text-disabled: var(--disabled-text-color)
+  ha-color-text-link: "#000000"
+
+  ha-color-border-primary-quiet: "#000000"
+  ha-color-border-primary-normal: "#000000"
+  ha-color-border-primary-loud: "#000000"
+  ha-color-border-quiet: var(--ha-color-border-primary-quiet)
+  ha-color-border-normal: var(--ha-color-border-primary-normal)
+  ha-color-border-loud: var(--ha-color-border-primary-loud)
+  ha-color-border-neutral-quiet: "#000000"
+  ha-color-border-neutral-normal: "#000000"
+  ha-color-border-neutral-loud: "#000000"
+  ha-color-border-danger-quiet: "#000000"
+  ha-color-border-danger-normal: "#000000"
+  ha-color-border-danger-loud: "#000000"
+  ha-color-border-warning-quiet: "#000000"
+  ha-color-border-warning-normal: "#000000"
+  ha-color-border-warning-loud: "#000000"
+  ha-color-border-success-quiet: "#000000"
+  ha-color-border-success-normal: "#000000"
+  ha-color-border-success-loud: "#000000"
+
+  ha-color-fill-primary-quiet-resting: "#ffffff"
+  ha-color-fill-primary-quiet-hover: "#ffffff"
+  ha-color-fill-primary-quiet-active: "#ffffff"
+  ha-color-fill-primary-normal-resting: "#ffffff"
+  ha-color-fill-primary-normal-hover: "#ffffff"
+  ha-color-fill-primary-normal-active: "#ffffff"
+  ha-color-fill-primary-loud-resting: var(--macintosh-surface)
+  ha-color-fill-primary-loud-hover: var(--macintosh-surface)
+  ha-color-fill-primary-loud-active: var(--macintosh-surface)
+  ha-color-fill-neutral-quiet-resting: "#ffffff"
+  ha-color-fill-neutral-quiet-hover: "#ffffff"
+  ha-color-fill-neutral-quiet-active: "#ffffff"
+  ha-color-fill-neutral-normal-resting: "#ffffff"
+  ha-color-fill-neutral-normal-hover: "#ffffff"
+  ha-color-fill-neutral-normal-active: "#ffffff"
+  ha-color-fill-neutral-loud-resting: "#000000"
+  ha-color-fill-neutral-loud-hover: "#000000"
+  ha-color-fill-neutral-loud-active: "#000000"
+  ha-color-fill-disabled-quiet-resting: "#ffffff"
+  ha-color-fill-disabled-normal-resting: "#ffffff"
+  ha-color-fill-disabled-loud-resting: "#000000"
+  ha-color-fill-danger-quiet-resting: "#ffffff"
+  ha-color-fill-danger-quiet-hover: "#ffffff"
+  ha-color-fill-danger-quiet-active: "#ffffff"
+  ha-color-fill-danger-normal-resting: "#ffffff"
+  ha-color-fill-danger-normal-hover: "#ffffff"
+  ha-color-fill-danger-normal-active: "#ffffff"
+  ha-color-fill-danger-loud-resting: "#000000"
+  ha-color-fill-danger-loud-hover: "#000000"
+  ha-color-fill-danger-loud-active: "#000000"
+  ha-color-fill-warning-quiet-resting: "#ffffff"
+  ha-color-fill-warning-quiet-hover: "#ffffff"
+  ha-color-fill-warning-quiet-active: "#ffffff"
+  ha-color-fill-warning-normal-resting: "#ffffff"
+  ha-color-fill-warning-normal-hover: "#ffffff"
+  ha-color-fill-warning-normal-active: "#ffffff"
+  ha-color-fill-warning-loud-resting: "#000000"
+  ha-color-fill-warning-loud-hover: "#000000"
+  ha-color-fill-warning-loud-active: "#000000"
+  ha-color-fill-success-quiet-resting: "#ffffff"
+  ha-color-fill-success-quiet-hover: "#ffffff"
+  ha-color-fill-success-quiet-active: "#ffffff"
+  ha-color-fill-success-normal-resting: "#ffffff"
+  ha-color-fill-success-normal-hover: "#ffffff"
+  ha-color-fill-success-normal-active: "#ffffff"
+  ha-color-fill-success-loud-resting: "#000000"
+  ha-color-fill-success-loud-hover: "#000000"
+  ha-color-fill-success-loud-active: "#000000"
+
+  ha-color-on-primary-quiet: "#000000"
+  ha-color-on-primary-normal: "#000000"
+  ha-color-on-primary-loud: "#000000"
+  ha-color-on-neutral-quiet: "#000000"
+  ha-color-on-neutral-normal: "#000000"
+  ha-color-on-neutral-loud: "#ffffff"
+  ha-color-on-disabled-quiet: "#000000"
+  ha-color-on-disabled-normal: "#000000"
+  ha-color-on-disabled-loud: "#ffffff"
+  ha-color-on-danger-quiet: "#000000"
+  ha-color-on-danger-normal: "#000000"
+  ha-color-on-danger-loud: "#ffffff"
+  ha-color-on-warning-quiet: "#000000"
+  ha-color-on-warning-normal: "#000000"
+  ha-color-on-warning-loud: "#ffffff"
+  ha-color-on-success-quiet: "#000000"
+  ha-color-on-success-normal: "#000000"
+  ha-color-on-success-loud: "#ffffff"
+  ha-color-surface-default: "#f7f7f7"
+  ha-color-on-surface-default: "#000000"
+  ha-color-form-background: "#ececec"
+  ha-color-form-background-hover: "#f7f7f7"
+  ha-color-form-background-disabled: "#d8d8d8"
+  ha-color-shadow-scrollable-fade: rgba(0, 0, 0, 0.32)
+
+  # Text
+  primary-text-color: "#000000"
+  secondary-text-color: "#303030"
+  text-primary-color: "#000000"
+  disabled-text-color: "#8c8c8c"
+  rgb-primary-color: 0, 0, 0
+  rgb-accent-color: 0, 0, 0
+  rgb-primary-text-color: 0, 0, 0
+  rgb-secondary-text-color: 0, 0, 0
+  rgb-card-background-color: 247, 247, 247
+  rgb-warning-color: 0, 0, 0
+  rgb-error-color: 0, 0, 0
+  rgb-success-color: 0, 0, 0
+  rgb-info-color: 0, 0, 0
+  error-color: "#303030"
+  warning-color: "#727272"
+  success-color: "#8a8a8a"
+  info-color: "#626262"
+
+  # Sidebar Menu
+  sidebar-icon-color: "#000000"
+  sidebar-text-color: "#000000"
+  sidebar-background-color: "#ececec"
+  sidebar-selected-background-color: "#000000"
+  sidebar-selected-icon-color: var(--macintosh-dark-gray)
+  sidebar-selected-text-color: "#000000"
+  # States and Badges
+  state-icon-color: "#000000"
+  state-icon-active-color: "#000000"
+  state-active-color: "#000000"
+  state-inactive-color: "#000000"
+  state-light-active-color: "#000000"
+  state-switch-active-color: "#000000"
+  state-input_boolean-active-color: "#000000"
+  state-fan-active-color: "#000000"
+  state-cover-active-color: "#000000"
+  state-lock-active-color: "#000000"
+  state-icon-unavailable-color: var(--disabled-text-color)
+
+  # Sliders
+  paper-slider-knob-color: "#ffffff"
+  paper-slider-knob-start-color: "#ffffff"
+  paper-slider-pin-color: "#ffffff"
+  paper-slider-active-color: var(--macintosh-slider-active-color)
+  paper-slider-secondary-color: var(--macintosh-control)
+  paper-slider-container-color: var(--macintosh-control)
+  mini-media-player-overlay-color: rgba(0, 0, 0, 0.55)
+
+  md-slider-inactive-track-color: var(--macintosh-control)
+  md-slider-active-track-color: var(--macintosh-slider-active-color)
+  md-slider-handle-color: "#ffffff"
+  md-slider-focus-handle-color: "#ffffff"
+  md-slider-hover-handle-color: "#ffffff"
+  md-slider-pressed-handle-color: "#ffffff"
+  md-slider-handle-elevation: "1px 1px 0 #000000"
+  md-slider-handle-shadow-color: "#000000"
+  md-slider-handle-shape: "50%"
+  ha-slider-track-color: var(--macintosh-control)
+  ha-slider-indicator-color: var(--macintosh-slider-active-color)
+  ha-slider-thumb-color: "#ffffff"
+  control-slider-background: var(--macintosh-control)
+  control-slider-background-opacity: "1"
+  control-slider-color: var(--macintosh-slider-active-color)
+  control-slider-border-radius: var(--macintosh-button-radius)
+  graph-color-1: "#000000"
+  ha-progress-bar-indicator-background: var(--macintosh-progress-fill)
+  ha-progress-bar-track-color: var(--macintosh-light-gray)
+  ha-progress-bar-border-radius: "4px"
+  mdc-radio-checked-color: "#000000"
+  mdc-radio-unchecked-color: "#000000"
+  mdc-radio-disabled-color: "#8c8c8c"
+
+  # Text Dividers from text-divider-row card
+  text-divider-color: var(--divider-color)
+  text-divider-font-size: "13px"
+  text-divider-line-size: "1px"
+
+  # Labels
+  label-badge-background-color: "#ffffff"
+  label-badge-text-color: "#000000"
+  label-badge-red: "#000000"
+  label-badge-green: "#000000"
+  label-badge-blue: "#000000"
+  label-badge-yellow: "#000000"
+  label-badge-gray: "#000000"
+  label-badge-orange: "#000000"
+
+  # Cards
+  ha-card-border-radius: "0px"
+  ha-card-header-font-size: var(--macintosh-title-font-size)
+  ha-card-header-letter-spacing: "0"
+  ha-card-box-shadow: "3px 3px 0 #000000"
+  ha-card-header-color: "#000000"
+  ha-card-background: "#f7f7f7"
+  card-background-color: "#f7f7f7"
+  bar-card-color: "#666666"
+  bar-card-disabled-color: "#b8b8b8"
+  bar-card-border-radius: "4px"
+  paper-listbox-background-color: "#f7f7f7"
+  paper-font-button_-_text-transform: "none"
+  mdc-theme-surface: "#f7f7f7"
+  mdc-theme-background: "#d8d8d8"
+  mdc-theme-primary: "#000000"
+  mdc-theme-secondary: "#000000"
+  mdc-theme-on-primary: "#ffffff"
+  mdc-theme-on-secondary: "#ffffff"
+  mdc-theme-on-surface: "#000000"
+  mdc-ripple-color: "#000000"
+
+  # WebAwesome components used by newer Home Assistant controls
+  wa-color-brand-fill-loud: var(--ha-color-fill-primary-loud-resting)
+  wa-color-brand-fill-normal: var(--ha-color-fill-primary-normal-resting)
+  wa-color-brand-fill-quiet: var(--ha-color-fill-primary-quiet-hover)
+  wa-color-brand-border-loud: var(--ha-color-border-loud)
+  wa-color-brand-border-normal: var(--ha-color-primary-50)
+  wa-color-brand-border-quiet: var(--ha-color-border-quiet)
+  wa-color-brand-on-loud: var(--ha-color-on-primary-loud)
+  wa-color-brand-on-normal: var(--ha-color-on-primary-normal)
+  wa-color-brand-on-quiet: var(--ha-color-on-primary-quiet)
+  wa-color-neutral-fill-loud: var(--ha-color-fill-neutral-loud-resting)
+  wa-color-neutral-fill-normal: var(--ha-color-fill-neutral-normal-resting)
+  wa-color-neutral-fill-quiet: var(--ha-color-fill-neutral-quiet-hover)
+  wa-color-neutral-border-loud: var(--ha-color-border-neutral-loud)
+  wa-color-neutral-border-normal: var(--ha-color-border-neutral-normal)
+  wa-color-neutral-border-quiet: var(--ha-color-border-neutral-quiet)
+  wa-color-neutral-on-loud: var(--ha-color-on-neutral-loud)
+  wa-color-neutral-on-normal: var(--ha-color-on-neutral-normal)
+  wa-color-neutral-on-quiet: var(--ha-color-on-neutral-quiet)
+  wa-color-success-fill-loud: var(--ha-color-fill-success-loud-resting)
+  wa-color-success-fill-normal: var(--ha-color-fill-success-normal-resting)
+  wa-color-success-fill-quiet: var(--ha-color-fill-success-quiet-hover)
+  wa-color-success-border-loud: var(--ha-color-border-success-loud)
+  wa-color-success-border-normal: var(--ha-color-border-success-normal)
+  wa-color-success-border-quiet: var(--ha-color-border-success-quiet)
+  wa-color-success-on-loud: var(--ha-color-on-success-loud)
+  wa-color-success-on-normal: var(--ha-color-on-success-normal)
+  wa-color-success-on-quiet: var(--ha-color-on-success-quiet)
+  wa-color-warning-fill-loud: var(--ha-color-fill-warning-loud-resting)
+  wa-color-warning-fill-normal: var(--ha-color-fill-warning-normal-resting)
+  wa-color-warning-fill-quiet: var(--ha-color-fill-warning-quiet-hover)
+  wa-color-warning-border-loud: var(--ha-color-border-warning-loud)
+  wa-color-warning-border-normal: var(--ha-color-border-warning-normal)
+  wa-color-warning-border-quiet: var(--ha-color-border-warning-quiet)
+  wa-color-warning-on-loud: var(--ha-color-on-warning-loud)
+  wa-color-warning-on-normal: var(--ha-color-on-warning-normal)
+  wa-color-warning-on-quiet: var(--ha-color-on-warning-quiet)
+  wa-color-danger-fill-loud: var(--ha-color-fill-danger-loud-resting)
+  wa-color-danger-fill-normal: var(--ha-color-fill-danger-normal-resting)
+  wa-color-danger-fill-quiet: var(--ha-color-fill-danger-quiet-hover)
+  wa-color-danger-border-loud: var(--ha-color-border-danger-loud)
+  wa-color-danger-border-normal: var(--ha-color-border-danger-normal)
+  wa-color-danger-border-quiet: var(--ha-color-border-danger-quiet)
+  wa-color-danger-on-loud: var(--ha-color-on-danger-loud)
+  wa-color-danger-on-normal: var(--ha-color-on-danger-normal)
+  wa-color-danger-on-quiet: var(--ha-color-on-danger-quiet)
+  wa-color-text-quiet: var(--ha-color-text-secondary)
+  wa-color-text-normal: var(--primary-text-color)
+  wa-color-surface-default: var(--card-background-color)
+  wa-color-surface-raised: var(--mdc-theme-surface)
+  wa-color-surface-border: var(--ha-color-border-neutral-quiet)
+  wa-focus-ring-color: "#000000"
+  wa-form-control-background-color: var(--ha-color-form-background)
+  wa-form-control-border-color: var(--ha-color-border-neutral-normal)
+  wa-form-control-value-color: var(--primary-text-color)
+  wa-form-control-placeholder-color: "#000000"
+
+  # Entity lists, menus, and editor rows
+  material-background-color: "#f7f7f7"
+  material-secondary-background-color: "#ececec"
+  ha-card-border-color: "#000000"
+  ha-list-background: "#f7f7f7"
+  ha-list-item-border-color: "transparent"
+  ha-list-item-selected-background-color: "#000000"
+  ha-list-item-selected-text-color: "#ffffff"
+  paper-item-icon-color: "#000000"
+  paper-item-icon-active-color: "#000000"
+  paper-item-selected_-_background-color: "#000000"
+  paper-tabs-selection-bar-color: "#000000"
+  app-header-edit-background-color: "#ececec"
+  app-header-edit-text-color: "#000000"
+
+  # Pills, chips, and badges
+  chip-background-color: "#ffffff"
+  chip-text-color: "#000000"
+  chip-icon-color: "#000000"
+  chip-selected-background-color: "#000000"
+  chip-selected-text-color: "#ffffff"
+  chip-selected-icon-color: "#ffffff"
+  ha-chip-background-color: "#ffffff"
+  ha-chip-text-color: "#000000"
+  ha-chip-icon-color: "#000000"
+  ha-chip-selected-background-color: "#000000"
+  ha-chip-selected-text-color: "#ffffff"
+  ha-chip-selected-icon-color: "#ffffff"
+  mush-chip-background-color: "#ffffff"
+  mush-chip-border-radius: "4px"
+  mush-chip-box-shadow: "1px 1px 0 #000000"
+  mush-chip-font-size: "13px"
+
+  #HACS
+  hcv-color-new: "#000000"
+
+  # Switches
+  # The visible square is compact; Home Assistant keeps a 40 px hit area around it.
+  ha-switch-width: "18px"
+  ha-switch-size: "18px"
+  ha-switch-thumb-size: "12px"
+  ha-switch-min-touch-size: "40px"
+  ha-entity-toggle-switch-width: "18px"
+  ha-entity-toggle-switch-size: "18px"
+  ha-entity-toggle-switch-thumb-size: "12px"
+  ha-switch-background-color: "#ffffff"
+  ha-switch-background-color-hover: "#ffffff"
+  ha-switch-border-color: "#000000"
+  ha-switch-thumb-background-color: "#ffffff"
+  ha-switch-thumb-background-color-hover: "#ffffff"
+  ha-switch-thumb-border-color: "#000000"
+  ha-switch-thumb-border-color-hover: "#000000"
+  ha-switch-thumb-box-shadow: "none"
+  ha-switch-checked-background-color: "#ffffff"
+  ha-switch-checked-background-color-hover: "#ffffff"
+  ha-switch-checked-border-color: "#000000"
+  ha-switch-checked-border-color-hover: "#000000"
+  ha-switch-checked-thumb-background-color: "#000000"
+  ha-switch-checked-thumb-background-color-hover: "#000000"
+  ha-switch-checked-thumb-border-color: "#000000"
+  ha-switch-checked-thumb-border-color-hover: "#000000"
+  switch-checked-color: "#000000"
+  switch-checked-button-color: "#000000"
+  switch-checked-track-color: "#ffffff"
+  switch-unchecked-color: "#000000"
+  switch-unchecked-button-color: "#ffffff"
+  switch-unchecked-track-color: "#ffffff"
+  switch-disabled-button-color: "#000000"
+  switch-disabled-track-color: "#ffffff"
+
+  # Toggles
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  paper-toggle-button-disabled-button-color: var(--switch-disabled-button-color)
+  paper-toggle-button-disabled-bar-color: var(--switch-disabled-track-color)
+  mdc-switch-selected-focus-state-layer-color: "#000000"
+  mdc-switch-selected-handle-color: "#000000"
+  mdc-switch-selected-hover-handle-color: "#000000"
+  mdc-switch-selected-pressed-handle-color: "#000000"
+  mdc-switch-selected-focus-handle-color: "#000000"
+  mdc-switch-selected-track-color: "#ffffff"
+  mdc-switch-selected-hover-track-color: "#ffffff"
+  mdc-switch-selected-pressed-track-color: "#ffffff"
+  mdc-switch-selected-focus-track-color: "#ffffff"
+  mdc-switch-unselected-handle-color: "#ffffff"
+  mdc-switch-unselected-hover-handle-color: "#ffffff"
+  mdc-switch-unselected-pressed-handle-color: "#ffffff"
+  mdc-switch-unselected-focus-handle-color: "#ffffff"
+  mdc-switch-unselected-track-color: "#ffffff"
+  mdc-switch-unselected-hover-track-color: "#ffffff"
+  mdc-switch-unselected-pressed-track-color: "#ffffff"
+  mdc-switch-unselected-focus-track-color: "#ffffff"
+  toggle-icon-width: 22px
+
+  # Table
+  table-row-background-color: "#ffffff"
+  table-row-alternative-background-color: "#ffffff"
+  data-table-background-color: "#ffffff"
+  data-table-header-background-color: "#ffffff"
+  data-table-row-hover-background-color: "#ffffff"
+  data-table-selected-color: "#000000"
+
+  # Input fields
+  input-idle-line-color: "#000000"
+  input-hover-line-color: "#000000"
+  input-disabled-line-color: "#000000"
+  input-outlined-idle-border-color: "#000000"
+  input-outlined-hover-border-color: "#000000"
+  input-outlined-disabled-border-color: "#000000"
+  input-fill-color: "#ffffff"
+  input-disabled-fill-color: "#ffffff"
+  input-ink-color: "#000000"
+  input-label-ink-color: "#000000"
+  input-disabled-ink-color: "#000000"
+  input-dropdown-icon-color: "#000000"
+  input-focused-label-color: "#000000"
+  input-error-color: "#000000"
+
+  # Legacy Input fields
+  mdc-select-idle-line-color: "#000000"
+  mdc-select-hover-line-color: "#000000"
+  mdc-select-disabled-line-color: "#000000"
+  mdc-select-outlined-idle-border-color: "#000000"
+  mdc-select-outlined-hover-border-color: "#000000"
+  mdc-select-outlined-disabled-border-color: "#000000"
+  mdc-select-fill-color: "#ffffff"
+  mdc-select-disabled-fill-color: "#ffffff"
+  mdc-select-ink-color: "#000000"
+  mdc-select-label-ink-color: "#000000"
+  mdc-select-disabled-ink-color: "#000000"
+  mdc-select-dropdown-icon-color: "#000000"
+  mdc-text-field-fill-color: "#ffffff"
+  mdc-text-field-disabled-fill-color: "#ffffff"
+  mdc-text-field-ink-color: "#000000"
+  mdc-text-field-label-ink-color: "#000000"
+  mdc-text-field-disabled-ink-color: "#000000"
+  mdc-text-field-idle-line-color: "#000000"
+  mdc-text-field-hover-line-color: "#000000"
+  mdc-text-field-outlined-idle-border-color: "#000000"
+  mdc-text-field-outlined-hover-border-color: "#000000"
+
+  ha-card-border-width: "1px"
+
+  # System 7 geometry
+  ha-button-border-radius: var(--macintosh-button-radius)
+  ha-button-box-shadow: 1px 1px 0 var(--macintosh-black)
+  ha-icon-button-size: "40px"
+  control-border-radius: "4px"
+  control-switch-border-radius: "0px"
+  wa-border-radius-pill: "0px"
+  ha-dialog-border-radius: "0px"
+  mdc-shape-small: "0px"
+  mdc-shape-medium: "0px"
+  mdc-shape-large: "0px"
+  chip-border-radius: "4px"
+
+  modes:
+    dark: {}
