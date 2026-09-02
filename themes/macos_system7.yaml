@@ -2,7 +2,7 @@ MacOS System 7 eink theme:
   card-mod-theme: MacOS System 7 eink theme
   uix-theme: MacOS System 7 eink theme
 
-  # UIX is the primary injection layer for current HA cards, rows and dialogs.
+  # UIX is the required injection layer for current HA cards, rows and dialogs.
   # Dual selectors retain support for custom cards with a divergent ha-card tree.
   uix-card-yaml: |
     ".": |
@@ -2673,6 +2673,617 @@ MacOS System 7 eink theme:
   mdc-shape-medium: "0px"
   mdc-shape-large: "0px"
   chip-border-radius: "4px"
+
+  modes:
+    dark: {}
+
+# System 7 color variant. UIX and card-mod structure is shared with the
+# monochrome theme; the runtime variables below supply the color palette.
+MacOS System 7 color theme:
+  card-mod-theme: MacOS System 7 eink theme
+  uix-theme: MacOS System 7 eink theme
+
+  # System 7 grayscale ramp and 50% one-bit ordered-dither desktop.
+  macintosh-black: "#000000"
+  macintosh-shadow: "#303030"
+  macintosh-dark-gray: "#5e5e5e"
+  macintosh-mid-gray: "#8c8c8c"
+  macintosh-light-gray: "#b8b8b8"
+  macintosh-platinum: "#d8d8d8"
+  macintosh-control: "#ececec"
+  macintosh-button-radius: "6px"
+  macintosh-default-button-radius: "30px"
+  macintosh-default-button-shadow: "inset 0 0 0 2px var(--macintosh-surface), inset 0 0 0 3px var(--macintosh-black), 2px 2px 0 var(--macintosh-black)"
+  macintosh-dialog-action-height: "40px"
+  macintosh-plain-button-shadow: "2px 2px 0 var(--macintosh-black)"
+  macintosh-icon-button-height: "27px"
+  macintosh-icon-button-width: "31px"
+  macintosh-icon-button-radius: "5px"
+  macintosh-icon-button-gap: "5px"
+  macintosh-progress-background: "repeating-conic-gradient(var(--macintosh-platinum) 0 25%, var(--macintosh-control) 0 50%) 0 0 / 2px 2px"
+  macintosh-progress-fill: "repeating-conic-gradient(#0000aa 0 25%, #3366cc 0 50%) 0 0 / 2px 2px"
+  macintosh-icon-dither: "none"
+  macintosh-surface: "#f7f7f7"
+  macintosh-global-filter: "none"
+  macintosh-header-start-offset: "var(--ha-sidebar-width, 0px)"
+  macintosh-placeholder-color: "#5e5e5e"
+  macintosh-badge-text-color: "#ffffff"
+  macintosh-slider-active-color: "#0000aa"
+  macintosh-titlebar-background: "linear-gradient(to bottom, #ffffff 0 3px, transparent 3px 16px, #ffffff 16px 100%), repeating-linear-gradient(to bottom, #f7f7f7 0, #f7f7f7 1px, #777777 1px, #777777 2px, #f7f7f7 2px, #f7f7f7 3px)"
+  macintosh-title-label-background: "#ffffff"
+  macintosh-direct-titlebar-background: "linear-gradient(var(--macintosh-title-label-background), var(--macintosh-title-label-background)) center / min(11em, calc(100% - 44px)) 17px no-repeat, var(--macintosh-titlebar-background)"
+  macintosh-titlebar-zoom-box: "linear-gradient(#000000, #000000) 2px 2px / 7px 1px no-repeat, linear-gradient(#000000, #000000) 2px 2px / 1px 7px no-repeat, #f7f7f7"
+  macintosh-dialog-title-font-size: "18px"
+  lovelace-background: "repeating-conic-gradient(#000000 0 25%, #ffffff 0 50%) 0 0 / 4px 4px"
+  accent-color: "#0000aa"
+  text-accent-color: "#ffffff"
+
+  #Header
+  app-header-background-color: "#ececec"
+  app-header-text-color: "#000000"
+  ha-view-sections-column-gap: "20px"
+  ha-view-sections-row-gap: "20px"
+  ha-view-sections-narrow-column-gap: "20px"
+  masonry-view-card-margin: "10px"
+  stack-card-gap: "20px"
+  horizontal-stack-card-gap: var(--stack-card-gap)
+  vertical-stack-card-gap: var(--stack-card-gap)
+
+  #Fonts
+  macintosh-body-font-family: 'GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif'
+  primary-font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  macintosh-title-font-family: 'ChicagoWeb, Chicago, Charcoal, GenevaSystem, Geneva, sans-serif'
+  macintosh-title-font-size: "15px"
+  macintosh-section-title-font-size: "18px"
+  ha-font-family-body: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  ha-font-family-heading: "var(--macintosh-title-font-family)"
+  ha-font-family-code: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  ha-font-family-longform: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  mdc-typography-font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  mdc-typography-button-font-family: "var(--macintosh-title-font-family)"
+  mdc-typography-body1-font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  md-list-item-label-text-font: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  title-font-family: "var(--macintosh-title-font-family)"
+  title-font-size: "var(--macintosh-title-font-size)"
+  ha-heading-card-title-font-family: "var(--macintosh-title-font-family)"
+  ha-heading-card-title-font-size: "var(--macintosh-title-font-size)"
+  paper-font-common-base_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-common-code_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-body1_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-subhead_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-headline_-_font-family: "var(--macintosh-title-font-family)"
+  paper-font-caption_-_font-family: 'var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif)'
+  paper-font-title_-_font-family: "var(--macintosh-title-font-family)"
+  ha-card-header-font-family: "var(--macintosh-title-font-family)"
+
+  # Main Interface Colors
+  primary-color: "#0000aa"
+  dark-primary-color: "#000077"
+  darker-primary-color: "#000055"
+  light-primary-color: "#3366cc"
+  primary-background-color: "#d8d8d8"
+  secondary-background-color: "#ececec"
+  clear-background-color: "#f7f7f7"
+  divider-color: "#000000"
+  outline-color: "#000000"
+  outline-hover-color: "#000000"
+  scrollbar-thumb-color: "#000000"
+  black-color: "#000000"
+  white-color: "#ffffff"
+  red-color: "#cc0000"
+  pink-color: "#cc6699"
+  purple-color: "#660099"
+  deep-purple-color: "#440066"
+  indigo-color: "#333399"
+  blue-color: "#0000cc"
+  light-blue-color: "#3399cc"
+  cyan-color: "#0099cc"
+  teal-color: "#008888"
+  green-color: "#008800"
+  light-green-color: "#66aa33"
+  lime-color: "#99aa00"
+  yellow-color: "#ccaa00"
+  amber-color: "#dd9900"
+  orange-color: "#cc6600"
+  deep-orange-color: "#aa3300"
+  brown-color: "#775533"
+  light-grey-color: "#b8b8b8"
+  grey-color: "#8c8c8c"
+  dark-grey-color: "#5e5e5e"
+  blue-grey-color: "#777777"
+
+  # Home Assistant 2025+ core color palette
+  ha-color-primary-05: "#000000"
+  ha-color-primary-10: "#000000"
+  ha-color-primary-20: "#000000"
+  ha-color-primary-30: "#000000"
+  ha-color-primary-40: "#3366cc"
+  ha-color-primary-50: "#0000aa"
+  ha-color-primary-60: "#000077"
+  ha-color-primary-70: "#ffffff"
+  ha-color-primary-80: "#ffffff"
+  ha-color-primary-90: "#ffffff"
+  ha-color-primary-95: "#ffffff"
+
+  ha-color-neutral-05: "#000000"
+  ha-color-neutral-10: "#000000"
+  ha-color-neutral-20: "#000000"
+  ha-color-neutral-30: "#000000"
+  ha-color-neutral-40: "#000000"
+  ha-color-neutral-50: "#000000"
+  ha-color-neutral-60: var(--macintosh-placeholder-color)
+  ha-color-neutral-70: "#ffffff"
+  ha-color-neutral-80: "#ffffff"
+  ha-color-neutral-90: "#ffffff"
+  ha-color-neutral-95: "#ffffff"
+
+  ha-color-orange-05: "#000000"
+  ha-color-orange-10: "#000000"
+  ha-color-orange-20: "#000000"
+  ha-color-orange-30: "#000000"
+  ha-color-orange-40: "#dd9900"
+  ha-color-orange-50: "#cc6600"
+  ha-color-orange-60: "#aa3300"
+  ha-color-orange-70: "#ffffff"
+  ha-color-orange-80: "#ffffff"
+  ha-color-orange-90: "#ffffff"
+  ha-color-orange-95: "#ffffff"
+
+  ha-color-red-05: "#000000"
+  ha-color-red-10: "#000000"
+  ha-color-red-20: "#000000"
+  ha-color-red-30: "#000000"
+  ha-color-red-40: "#dd3333"
+  ha-color-red-50: "#cc0000"
+  ha-color-red-60: "#990000"
+  ha-color-red-70: "#ffffff"
+  ha-color-red-80: "#ffffff"
+  ha-color-red-90: "#ffffff"
+  ha-color-red-95: "#ffffff"
+
+  ha-color-green-05: "#000000"
+  ha-color-green-10: "#000000"
+  ha-color-green-20: "#000000"
+  ha-color-green-30: "#000000"
+  ha-color-green-40: "#33aa33"
+  ha-color-green-50: "#008800"
+  ha-color-green-60: "#006600"
+  ha-color-green-70: "#ffffff"
+  ha-color-green-80: "#ffffff"
+  ha-color-green-90: "#ffffff"
+  ha-color-green-95: "#ffffff"
+
+  # Home Assistant 2025+ semantic colors
+  ha-color-focus: "#0000aa"
+  ha-color-text-primary: var(--primary-text-color)
+  ha-color-text-secondary: var(--secondary-text-color)
+  ha-color-text-disabled: var(--disabled-text-color)
+  ha-color-text-link: "#0000aa"
+
+  ha-color-border-primary-quiet: "#000000"
+  ha-color-border-primary-normal: "#000000"
+  ha-color-border-primary-loud: "#000000"
+  ha-color-border-quiet: var(--ha-color-border-primary-quiet)
+  ha-color-border-normal: var(--ha-color-border-primary-normal)
+  ha-color-border-loud: var(--ha-color-border-primary-loud)
+  ha-color-border-neutral-quiet: "#000000"
+  ha-color-border-neutral-normal: "#000000"
+  ha-color-border-neutral-loud: "#000000"
+  ha-color-border-danger-quiet: "#000000"
+  ha-color-border-danger-normal: "#000000"
+  ha-color-border-danger-loud: "#000000"
+  ha-color-border-warning-quiet: "#000000"
+  ha-color-border-warning-normal: "#000000"
+  ha-color-border-warning-loud: "#000000"
+  ha-color-border-success-quiet: "#000000"
+  ha-color-border-success-normal: "#000000"
+  ha-color-border-success-loud: "#000000"
+
+  ha-color-fill-primary-quiet-resting: "#ffffff"
+  ha-color-fill-primary-quiet-hover: "#ffffff"
+  ha-color-fill-primary-quiet-active: "#ffffff"
+  ha-color-fill-primary-normal-resting: "#ffffff"
+  ha-color-fill-primary-normal-hover: "#ffffff"
+  ha-color-fill-primary-normal-active: "#ffffff"
+  ha-color-fill-primary-loud-resting: var(--macintosh-surface)
+  ha-color-fill-primary-loud-hover: var(--macintosh-surface)
+  ha-color-fill-primary-loud-active: var(--macintosh-surface)
+  ha-color-fill-neutral-quiet-resting: "#ffffff"
+  ha-color-fill-neutral-quiet-hover: "#ffffff"
+  ha-color-fill-neutral-quiet-active: "#ffffff"
+  ha-color-fill-neutral-normal-resting: "#ffffff"
+  ha-color-fill-neutral-normal-hover: "#ffffff"
+  ha-color-fill-neutral-normal-active: "#ffffff"
+  ha-color-fill-neutral-loud-resting: "#000000"
+  ha-color-fill-neutral-loud-hover: "#000000"
+  ha-color-fill-neutral-loud-active: "#000000"
+  ha-color-fill-disabled-quiet-resting: "#ffffff"
+  ha-color-fill-disabled-normal-resting: "#ffffff"
+  ha-color-fill-disabled-loud-resting: "#000000"
+  ha-color-fill-danger-quiet-resting: "#ffffff"
+  ha-color-fill-danger-quiet-hover: "#ffffff"
+  ha-color-fill-danger-quiet-active: "#ffffff"
+  ha-color-fill-danger-normal-resting: "#ffffff"
+  ha-color-fill-danger-normal-hover: "#ffffff"
+  ha-color-fill-danger-normal-active: "#ffffff"
+  ha-color-fill-danger-loud-resting: "#000000"
+  ha-color-fill-danger-loud-hover: "#000000"
+  ha-color-fill-danger-loud-active: "#000000"
+  ha-color-fill-warning-quiet-resting: "#ffffff"
+  ha-color-fill-warning-quiet-hover: "#ffffff"
+  ha-color-fill-warning-quiet-active: "#ffffff"
+  ha-color-fill-warning-normal-resting: "#ffffff"
+  ha-color-fill-warning-normal-hover: "#ffffff"
+  ha-color-fill-warning-normal-active: "#ffffff"
+  ha-color-fill-warning-loud-resting: "#000000"
+  ha-color-fill-warning-loud-hover: "#000000"
+  ha-color-fill-warning-loud-active: "#000000"
+  ha-color-fill-success-quiet-resting: "#ffffff"
+  ha-color-fill-success-quiet-hover: "#ffffff"
+  ha-color-fill-success-quiet-active: "#ffffff"
+  ha-color-fill-success-normal-resting: "#ffffff"
+  ha-color-fill-success-normal-hover: "#ffffff"
+  ha-color-fill-success-normal-active: "#ffffff"
+  ha-color-fill-success-loud-resting: "#000000"
+  ha-color-fill-success-loud-hover: "#000000"
+  ha-color-fill-success-loud-active: "#000000"
+
+  ha-color-on-primary-quiet: "#000000"
+  ha-color-on-primary-normal: "#000000"
+  ha-color-on-primary-loud: "#000000"
+  ha-color-on-neutral-quiet: "#000000"
+  ha-color-on-neutral-normal: "#000000"
+  ha-color-on-neutral-loud: "#ffffff"
+  ha-color-on-disabled-quiet: "#000000"
+  ha-color-on-disabled-normal: "#000000"
+  ha-color-on-disabled-loud: "#ffffff"
+  ha-color-on-danger-quiet: "#000000"
+  ha-color-on-danger-normal: "#000000"
+  ha-color-on-danger-loud: "#ffffff"
+  ha-color-on-warning-quiet: "#000000"
+  ha-color-on-warning-normal: "#000000"
+  ha-color-on-warning-loud: "#ffffff"
+  ha-color-on-success-quiet: "#000000"
+  ha-color-on-success-normal: "#000000"
+  ha-color-on-success-loud: "#ffffff"
+  ha-color-surface-default: "#f7f7f7"
+  ha-color-on-surface-default: "#000000"
+  ha-color-form-background: "#ececec"
+  ha-color-form-background-hover: "#f7f7f7"
+  ha-color-form-background-disabled: "#d8d8d8"
+  ha-color-shadow-scrollable-fade: rgba(0, 0, 0, 0.32)
+
+  # Text
+  primary-text-color: "#000000"
+  secondary-text-color: "#303030"
+  text-primary-color: "#000000"
+  disabled-text-color: "#8c8c8c"
+  rgb-primary-color: 0, 0, 170
+  rgb-accent-color: 0, 0, 170
+  rgb-primary-text-color: 0, 0, 0
+  rgb-secondary-text-color: 0, 0, 0
+  rgb-card-background-color: 247, 247, 247
+  rgb-warning-color: 204, 102, 0
+  rgb-error-color: 204, 0, 0
+  rgb-success-color: 0, 136, 0
+  rgb-info-color: 0, 0, 204
+  error-color: "#cc0000"
+  warning-color: "#cc6600"
+  success-color: "#008800"
+  info-color: "#0000cc"
+
+  # Sidebar Menu
+  sidebar-icon-color: "#000000"
+  sidebar-text-color: "#000000"
+  sidebar-background-color: "#ececec"
+  sidebar-selected-background-color: "#000000"
+  sidebar-selected-icon-color: var(--macintosh-dark-gray)
+  sidebar-selected-text-color: "#000000"
+  # States and Badges
+  state-icon-color: "#000000"
+  state-icon-active-color: "#0000aa"
+  state-active-color: "#0000aa"
+  state-inactive-color: "#000000"
+  state-light-active-color: "#ccaa00"
+  state-switch-active-color: "#0000aa"
+  state-input_boolean-active-color: "#0000aa"
+  state-fan-active-color: "#008888"
+  state-cover-active-color: "#660099"
+  state-lock-active-color: "#008800"
+  state-icon-unavailable-color: var(--disabled-text-color)
+
+  # Sliders
+  paper-slider-knob-color: "#ffffff"
+  paper-slider-knob-start-color: "#ffffff"
+  paper-slider-pin-color: "#ffffff"
+  paper-slider-active-color: var(--macintosh-slider-active-color)
+  paper-slider-secondary-color: var(--macintosh-control)
+  paper-slider-container-color: var(--macintosh-control)
+  mini-media-player-overlay-color: rgba(0, 0, 0, 0.55)
+
+  md-slider-inactive-track-color: var(--macintosh-control)
+  md-slider-active-track-color: var(--macintosh-slider-active-color)
+  md-slider-handle-color: "#ffffff"
+  md-slider-focus-handle-color: "#ffffff"
+  md-slider-hover-handle-color: "#ffffff"
+  md-slider-pressed-handle-color: "#ffffff"
+  md-slider-handle-elevation: "1px 1px 0 #000000"
+  md-slider-handle-shadow-color: "#000000"
+  md-slider-handle-shape: "50%"
+  ha-slider-track-color: var(--macintosh-control)
+  ha-slider-indicator-color: var(--macintosh-slider-active-color)
+  ha-slider-thumb-color: "#ffffff"
+  control-slider-background: var(--macintosh-control)
+  control-slider-background-opacity: "1"
+  control-slider-color: var(--macintosh-slider-active-color)
+  control-slider-border-radius: var(--macintosh-button-radius)
+  graph-color-1: "#0000cc"
+  ha-progress-bar-indicator-background: var(--macintosh-progress-fill)
+  ha-progress-bar-track-color: var(--macintosh-light-gray)
+  ha-progress-bar-border-radius: "4px"
+  mdc-radio-checked-color: "#000000"
+  mdc-radio-unchecked-color: "#000000"
+  mdc-radio-disabled-color: "#8c8c8c"
+
+  # Text Dividers from text-divier-row card
+  text-divider-color: var(--divider-color)
+  text-divider-font-size: "13px"
+  text-divider-line-size: "1px"
+
+  # Labels
+  label-badge-background-color: "#ffffff"
+  label-badge-text-color: "#000000"
+  label-badge-red: "#000000"
+  label-badge-green: "#000000"
+  label-badge-blue: "#000000"
+  label-badge-yellow: "#000000"
+  label-badge-gray: "#000000"
+  label-badge-orange: "#000000"
+
+  # Cards
+  ha-card-border-radius: "0px"
+  ha-card-header-font-size: var(--macintosh-title-font-size)
+  ha-card-header-letter-spacing: "0"
+  ha-card-box-shadow: "3px 3px 0 #000000"
+  ha-card-header-color: "#000000"
+  ha-card-background: "#f7f7f7"
+  card-background-color: "#f7f7f7"
+  bar-card-color: "#0000aa"
+  bar-card-disabled-color: "#b8b8b8"
+  bar-card-border-radius: "4px"
+  paper-listbox-background-color: "#f7f7f7"
+  paper-font-button_-_text-transform: "none"
+  mdc-theme-surface: "#f7f7f7"
+  mdc-theme-background: "#d8d8d8"
+  mdc-theme-primary: "#000000"
+  mdc-theme-secondary: "#000000"
+  mdc-theme-on-primary: "#ffffff"
+  mdc-theme-on-secondary: "#ffffff"
+  mdc-theme-on-surface: "#000000"
+  mdc-ripple-color: "#000000"
+
+  # WebAwesome components used by newer Home Assistant controls
+  wa-color-brand-fill-loud: var(--ha-color-fill-primary-loud-resting)
+  wa-color-brand-fill-normal: var(--ha-color-fill-primary-normal-resting)
+  wa-color-brand-fill-quiet: var(--ha-color-fill-primary-quiet-hover)
+  wa-color-brand-border-loud: var(--ha-color-border-loud)
+  wa-color-brand-border-normal: var(--ha-color-primary-50)
+  wa-color-brand-border-quiet: var(--ha-color-border-quiet)
+  wa-color-brand-on-loud: var(--ha-color-on-primary-loud)
+  wa-color-brand-on-normal: var(--ha-color-on-primary-normal)
+  wa-color-brand-on-quiet: var(--ha-color-on-primary-quiet)
+  wa-color-neutral-fill-loud: var(--ha-color-fill-neutral-loud-resting)
+  wa-color-neutral-fill-normal: var(--ha-color-fill-neutral-normal-resting)
+  wa-color-neutral-fill-quiet: var(--ha-color-fill-neutral-quiet-hover)
+  wa-color-neutral-border-loud: var(--ha-color-border-neutral-loud)
+  wa-color-neutral-border-normal: var(--ha-color-border-neutral-normal)
+  wa-color-neutral-border-quiet: var(--ha-color-border-neutral-quiet)
+  wa-color-neutral-on-loud: var(--ha-color-on-neutral-loud)
+  wa-color-neutral-on-normal: var(--ha-color-on-neutral-normal)
+  wa-color-neutral-on-quiet: var(--ha-color-on-neutral-quiet)
+  wa-color-success-fill-loud: var(--ha-color-fill-success-loud-resting)
+  wa-color-success-fill-normal: var(--ha-color-fill-success-normal-resting)
+  wa-color-success-fill-quiet: var(--ha-color-fill-success-quiet-hover)
+  wa-color-success-border-loud: var(--ha-color-border-success-loud)
+  wa-color-success-border-normal: var(--ha-color-border-success-normal)
+  wa-color-success-border-quiet: var(--ha-color-border-success-quiet)
+  wa-color-success-on-loud: var(--ha-color-on-success-loud)
+  wa-color-success-on-normal: var(--ha-color-on-success-normal)
+  wa-color-success-on-quiet: var(--ha-color-on-success-quiet)
+  wa-color-warning-fill-loud: var(--ha-color-fill-warning-loud-resting)
+  wa-color-warning-fill-normal: var(--ha-color-fill-warning-normal-resting)
+  wa-color-warning-fill-quiet: var(--ha-color-fill-warning-quiet-hover)
+  wa-color-warning-border-loud: var(--ha-color-border-warning-loud)
+  wa-color-warning-border-normal: var(--ha-color-border-warning-normal)
+  wa-color-warning-border-quiet: var(--ha-color-border-warning-quiet)
+  wa-color-warning-on-loud: var(--ha-color-on-warning-loud)
+  wa-color-warning-on-normal: var(--ha-color-on-warning-normal)
+  wa-color-warning-on-quiet: var(--ha-color-on-warning-quiet)
+  wa-color-danger-fill-loud: var(--ha-color-fill-danger-loud-resting)
+  wa-color-danger-fill-normal: var(--ha-color-fill-danger-normal-resting)
+  wa-color-danger-fill-quiet: var(--ha-color-fill-danger-quiet-hover)
+  wa-color-danger-border-loud: var(--ha-color-border-danger-loud)
+  wa-color-danger-border-normal: var(--ha-color-border-danger-normal)
+  wa-color-danger-border-quiet: var(--ha-color-border-danger-quiet)
+  wa-color-danger-on-loud: var(--ha-color-on-danger-loud)
+  wa-color-danger-on-normal: var(--ha-color-on-danger-normal)
+  wa-color-danger-on-quiet: var(--ha-color-on-danger-quiet)
+  wa-color-text-quiet: var(--ha-color-text-secondary)
+  wa-color-text-normal: var(--primary-text-color)
+  wa-color-surface-default: var(--card-background-color)
+  wa-color-surface-raised: var(--mdc-theme-surface)
+  wa-color-surface-border: var(--ha-color-border-neutral-quiet)
+  wa-focus-ring-color: "#000000"
+  wa-form-control-background-color: var(--ha-color-form-background)
+  wa-form-control-border-color: var(--ha-color-border-neutral-normal)
+  wa-form-control-value-color: var(--primary-text-color)
+  wa-form-control-placeholder-color: "#000000"
+
+  # Entity lists, menus, and editor rows
+  material-background-color: "#f7f7f7"
+  material-secondary-background-color: "#ececec"
+  ha-card-border-color: "#000000"
+  ha-list-background: "#f7f7f7"
+  ha-list-item-border-color: "transparent"
+  ha-list-item-selected-background-color: "#000000"
+  ha-list-item-selected-text-color: "#ffffff"
+  paper-item-icon-color: "#000000"
+  paper-item-icon-active-color: "#000000"
+  paper-item-selected_-_background-color: "#000000"
+  paper-tabs-selection-bar-color: "#000000"
+  app-header-edit-background-color: "#ececec"
+  app-header-edit-text-color: "#000000"
+
+  # Pills, chips, and badges
+  chip-background-color: "#ffffff"
+  chip-text-color: "#000000"
+  chip-icon-color: "#000000"
+  chip-selected-background-color: "#000000"
+  chip-selected-text-color: "#ffffff"
+  chip-selected-icon-color: "#ffffff"
+  ha-chip-background-color: "#ffffff"
+  ha-chip-text-color: "#000000"
+  ha-chip-icon-color: "#000000"
+  ha-chip-selected-background-color: "#000000"
+  ha-chip-selected-text-color: "#ffffff"
+  ha-chip-selected-icon-color: "#ffffff"
+  mush-chip-background-color: "#ffffff"
+  mush-chip-border-radius: "4px"
+  mush-chip-box-shadow: "1px 1px 0 #000000"
+  mush-chip-font-size: "13px"
+
+  #HACS
+  hcv-color-new: "#000000"
+
+  # Switches
+  # The visible square is compact; Home Assistant keeps a 40 px hit area around it.
+  ha-switch-width: "18px"
+  ha-switch-size: "18px"
+  ha-switch-thumb-size: "12px"
+  ha-switch-min-touch-size: "40px"
+  ha-entity-toggle-switch-width: "18px"
+  ha-entity-toggle-switch-size: "18px"
+  ha-entity-toggle-switch-thumb-size: "12px"
+  ha-switch-background-color: "#ffffff"
+  ha-switch-background-color-hover: "#ffffff"
+  ha-switch-border-color: "#000000"
+  ha-switch-thumb-background-color: "#ffffff"
+  ha-switch-thumb-background-color-hover: "#ffffff"
+  ha-switch-thumb-border-color: "#000000"
+  ha-switch-thumb-border-color-hover: "#000000"
+  ha-switch-thumb-box-shadow: "none"
+  ha-switch-checked-background-color: "#ffffff"
+  ha-switch-checked-background-color-hover: "#ffffff"
+  ha-switch-checked-border-color: "#000000"
+  ha-switch-checked-border-color-hover: "#000000"
+  ha-switch-checked-thumb-background-color: "#000000"
+  ha-switch-checked-thumb-background-color-hover: "#000000"
+  ha-switch-checked-thumb-border-color: "#000000"
+  ha-switch-checked-thumb-border-color-hover: "#000000"
+  switch-checked-color: "#000000"
+  switch-checked-button-color: "#000000"
+  switch-checked-track-color: "#ffffff"
+  switch-unchecked-color: "#000000"
+  switch-unchecked-button-color: "#ffffff"
+  switch-unchecked-track-color: "#ffffff"
+  switch-disabled-button-color: "#000000"
+  switch-disabled-track-color: "#ffffff"
+
+  # Toggles
+  paper-toggle-button-checked-button-color: var(--switch-checked-button-color)
+  paper-toggle-button-checked-bar-color: var(--switch-checked-track-color)
+  paper-toggle-button-unchecked-button-color: var(--switch-unchecked-button-color)
+  paper-toggle-button-unchecked-bar-color: var(--switch-unchecked-track-color)
+  paper-toggle-button-disabled-button-color: var(--switch-disabled-button-color)
+  paper-toggle-button-disabled-bar-color: var(--switch-disabled-track-color)
+  mdc-switch-selected-focus-state-layer-color: "#000000"
+  mdc-switch-selected-handle-color: "#000000"
+  mdc-switch-selected-hover-handle-color: "#000000"
+  mdc-switch-selected-pressed-handle-color: "#000000"
+  mdc-switch-selected-focus-handle-color: "#000000"
+  mdc-switch-selected-track-color: "#ffffff"
+  mdc-switch-selected-hover-track-color: "#ffffff"
+  mdc-switch-selected-pressed-track-color: "#ffffff"
+  mdc-switch-selected-focus-track-color: "#ffffff"
+  mdc-switch-unselected-handle-color: "#ffffff"
+  mdc-switch-unselected-hover-handle-color: "#ffffff"
+  mdc-switch-unselected-pressed-handle-color: "#ffffff"
+  mdc-switch-unselected-focus-handle-color: "#ffffff"
+  mdc-switch-unselected-track-color: "#ffffff"
+  mdc-switch-unselected-hover-track-color: "#ffffff"
+  mdc-switch-unselected-pressed-track-color: "#ffffff"
+  mdc-switch-unselected-focus-track-color: "#ffffff"
+  toggle-icon-width: 22px
+
+  # Table
+  table-row-background-color: "#ffffff"
+  table-row-alternative-background-color: "#ffffff"
+  data-table-background-color: "#ffffff"
+  data-table-header-background-color: "#ffffff"
+  data-table-row-hover-background-color: "#ffffff"
+  data-table-selected-color: "#000000"
+
+  # Input fields
+  input-idle-line-color: "#000000"
+  input-hover-line-color: "#000000"
+  input-disabled-line-color: "#000000"
+  input-outlined-idle-border-color: "#000000"
+  input-outlined-hover-border-color: "#000000"
+  input-outlined-disabled-border-color: "#000000"
+  input-fill-color: "#ffffff"
+  input-disabled-fill-color: "#ffffff"
+  input-ink-color: "#000000"
+  input-label-ink-color: "#000000"
+  input-disabled-ink-color: "#000000"
+  input-dropdown-icon-color: "#000000"
+  input-focused-label-color: "#000000"
+  input-error-color: "#000000"
+
+  # Legacy Input fields
+  mdc-select-idle-line-color: "#000000"
+  mdc-select-hover-line-color: "#000000"
+  mdc-select-disabled-line-color: "#000000"
+  mdc-select-outlined-idle-border-color: "#000000"
+  mdc-select-outlined-hover-border-color: "#000000"
+  mdc-select-outlined-disabled-border-color: "#000000"
+  mdc-select-fill-color: "#ffffff"
+  mdc-select-disabled-fill-color: "#ffffff"
+  mdc-select-ink-color: "#000000"
+  mdc-select-label-ink-color: "#000000"
+  mdc-select-disabled-ink-color: "#000000"
+  mdc-select-dropdown-icon-color: "#000000"
+  mdc-text-field-fill-color: "#ffffff"
+  mdc-text-field-disabled-fill-color: "#ffffff"
+  mdc-text-field-ink-color: "#000000"
+  mdc-text-field-label-ink-color: "#000000"
+  mdc-text-field-disabled-ink-color: "#000000"
+  mdc-text-field-idle-line-color: "#000000"
+  mdc-text-field-hover-line-color: "#000000"
+  mdc-text-field-outlined-idle-border-color: "#000000"
+  mdc-text-field-outlined-hover-border-color: "#000000"
+
+  ha-card-border-width: "1px"
+
+  # System 7 geometry
+  ha-button-border-radius: var(--macintosh-button-radius)
+  ha-button-box-shadow: 1px 1px 0 var(--macintosh-black)
+  ha-icon-button-size: "40px"
+  control-border-radius: "4px"
+  control-switch-border-radius: "0px"
+  wa-border-radius-pill: "0px"
+  ha-dialog-border-radius: "0px"
+  mdc-shape-small: "0px"
+  mdc-shape-medium: "0px"
+  mdc-shape-large: "0px"
+  chip-border-radius: "4px"
+
+  graph-color-2: "#cc0000"
+  graph-color-3: "#008800"
+  graph-color-4: "#cc6600"
+  graph-color-5: "#660099"
+  graph-color-6: "#008888"
+  graph-color-7: "#ccaa00"
+  graph-color-8: "#775533"
 
   modes:
     dark: {}

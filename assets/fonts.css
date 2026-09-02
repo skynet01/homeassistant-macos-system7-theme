@@ -1,6 +1,6 @@
 @font-face {
   font-family: "ChicagoWeb";
-  src: url("/local/macintosh-eink/Chicago.woff?v=2") format("woff");
+  src: url("./Chicago.woff") format("woff");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "GenevaSystem";
-  src: url("/local/macintosh-eink/Geneva.ttf?v=1") format("truetype");
+  src: url("./Geneva.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

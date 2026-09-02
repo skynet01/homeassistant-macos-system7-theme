@@ -5,8 +5,7 @@ require "json"
 require "yaml"
 
 ROOT = File.expand_path("..", __dir__)
-THEME_PATH = File.join(ROOT, "themes", "macintosh_eink.yaml")
-COLOR_THEME_PATH = File.join(ROOT, "themes", "macintosh_eink_color.yaml")
+THEME_PATH = File.join(ROOT, "themes", "macos_system7.yaml")
 CHICAGO_WEB_PATH = File.join(ROOT, "assets", "Chicago.woff")
 GENEVA_PATH = File.join(ROOT, "assets", "Geneva.ttf")
 FONT_CSS_PATH = File.join(ROOT, "assets", "fonts.css")
@@ -79,7 +78,7 @@ def declarations_for_exact_selector_group(css, *required_selectors)
 end
 
 assert(File.file?(THEME_PATH), "missing theme file: #{THEME_PATH}")
-assert(File.file?(COLOR_THEME_PATH), "missing color theme file: #{COLOR_THEME_PATH}")
+assert(Dir.glob(File.join(ROOT, "themes", "*.yaml")) == [THEME_PATH], "HACS theme repositories must ship one managed YAML file")
 assert(File.file?(CHICAGO_WEB_PATH), "missing uploaded Chicago webfont: #{CHICAGO_WEB_PATH}")
 assert(File.file?(GENEVA_PATH), "missing Geneva font: #{GENEVA_PATH}")
 assert(File.file?(FONT_CSS_PATH), "missing document-level font stylesheet: #{FONT_CSS_PATH}")
@@ -100,12 +99,16 @@ notices = File.read(NOTICES_PATH)
 license = File.read(LICENSE_PATH)
 validate_workflow = File.read(VALIDATE_WORKFLOW_PATH)
 release_workflow = File.read(RELEASE_WORKFLOW_PATH)
-assert(version == "1.0.0", "initial release version must be 1.0.0")
+assert(version == "1.0.1", "documentation correction release must be 1.0.1")
 assert(version.match?(/\A\d+\.\d+\.\d+\z/), "VERSION must use semantic versioning")
-assert(hacs == { "name" => "MacOS System 7 Theme" }, "HACS metadata must expose the public theme name")
-assert(readme.include?("/v#{version}/") && readme.include?("?v=#{version}"), "README install URLs must follow VERSION")
+assert(hacs == { "name" => "MacOS System 7 Theme", "filename" => "macos_system7.yaml" }, "HACS metadata must select the combined System 7 theme file")
+assert(readme.include?("@v#{version}/assets/fonts.css"), "README install URLs must follow VERSION")
 assert(readme.include?(MONO_THEME_NAME) && readme.include?(COLOR_THEME_NAME), "README must name both installable themes")
 assert(readme.downcase.include?("ai robots") && readme.downcase.include?("e-ink"), "README must carry the AI/e-ink project warning")
+assert(readme.scan(/^> /).length <= 2, "AI/e-ink warning must stay concise")
+assert(readme.include?("UIX is required") && readme.include?("card-mod is not required"), "README must describe UIX as the sole styling dependency")
+assert(!readme.include?("/config/www") && !readme.include?("curl -L"), "font setup must not require copying files into Home Assistant")
+assert(readme.include?("https://cdn.jsdelivr.net/gh/skynet01/homeassistant-macos-system7-theme@v#{version}/assets/fonts.css"), "README must use the versioned hosted font stylesheet")
 REQUIRED_README_LINKS.each { |url| assert(readme.include?(url), "README missing upstream link: #{url}") }
 SCREENSHOT_PATHS.each do |path|
   relative = path.delete_prefix("#{ROOT}/")
@@ -136,20 +139,18 @@ end
 assert(forbidden_public_paths.empty?, "private or backup artifacts must not ship: #{forbidden_public_paths.join(', ')}")
 
 theme_document = YAML.safe_load_file(THEME_PATH, aliases: true)
-color_theme_document = YAML.safe_load_file(COLOR_THEME_PATH, aliases: true)
 
-assert(theme_document.keys == [MONO_THEME_NAME], "monochrome file must expose only #{MONO_THEME_NAME}")
-assert(color_theme_document.keys == [COLOR_THEME_NAME], "color file must expose only #{COLOR_THEME_NAME}")
+assert(theme_document.keys == [MONO_THEME_NAME, COLOR_THEME_NAME], "managed theme file must expose both System 7 variants")
 
 theme = theme_document.fetch(MONO_THEME_NAME)
-color_theme = color_theme_document.fetch(COLOR_THEME_NAME)
+color_theme = theme_document.fetch(COLOR_THEME_NAME)
 structural_keys = theme.keys.grep(/\A(?:uix|card-mod)-(?!theme\z)/)
 effective_color_theme = theme.merge(color_theme)
 theme_variants = {
   MONO_THEME_NAME => theme,
   COLOR_THEME_NAME => effective_color_theme,
 }
-raw = [File.read(THEME_PATH), File.read(COLOR_THEME_PATH)].join("\n")
+raw = File.read(THEME_PATH)
 bw_raw = theme.to_yaml
 font_css = File.read(FONT_CSS_PATH)
 
@@ -184,12 +185,10 @@ assert(font_family.include?("GenevaSystem"), "theme must use Geneva for body tex
 body_font_family = theme.fetch("macintosh-body-font-family")
 assert(body_font_family.include?("GenevaSystem"), "theme must expose a dedicated Geneva body-font token")
 assert(theme.fetch("macintosh-title-font-family").include?("ChicagoWeb"), "theme must use the uploaded Chicago webfont for titles")
-assert(font_css.include?("/local/macintosh-eink/Chicago.woff"), "theme must self-host the uploaded Chicago webfont")
-assert(font_css.include?("/local/macintosh-eink/Geneva.ttf"), "theme must self-host its Geneva body font")
+assert(font_css.include?('url("./Chicago.woff")'), "hosted stylesheet must load the bundled Chicago webfont relatively")
+assert(font_css.include?('url("./Geneva.ttf")'), "hosted stylesheet must load the bundled Geneva body font relatively")
 assert(font_css.include?('font-family: "ChicagoWeb"'), "font stylesheet must register the uploaded Chicago webfont")
 assert(font_css.include?('font-family: "GenevaSystem"'), "font stylesheet must register GenevaSystem")
-assert(font_css.include?("/local/macintosh-eink/Chicago.woff?v=2"), "uploaded Chicago webfont needs a new cache version")
-assert(font_css.include?("/local/macintosh-eink/Geneva.ttf?v=1"), "Geneva font resource needs cache busting")
 
 hex_colors = bw_raw.scan(/#[0-9a-fA-F]{3,8}\b/).map(&:downcase).uniq
 non_grayscale_hex = hex_colors.reject do |value|

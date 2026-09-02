@@ -10,11 +10,8 @@ System 7. The primary version is designed for black-and-white e-ink displays; a 
 variant keeps the same window chrome while using a restrained classic Mac palette.
 Your existing dashboards and entities stay intact.
 
-> [!WARNING]
-> Most of this project was written by AI robots. It may be sloppy, overly specific,
-> or broken by a future Home Assistant frontend update. Its primary target is an
-> e-ink display, not universal perfection. Bug reports and cleanup pull requests are
-> welcome.
+> [!NOTE]
+> Built by AI robots, tuned by a human, and designed primarily for e-ink displays.
 
 ## Screenshots
 
@@ -44,18 +41,13 @@ configuration or bundled entities are required.
 
 ## Requirements
 
-The complete interface treatment depends on both of these frontend extensions:
-
-- [UI eXtension (UIX)](https://github.com/Lint-Free-Technology/uix) - required for
-  reliable styling across Home Assistant shadow roots, dialogs, settings pages, rows,
-  and current cards.
-- [card-mod](https://github.com/thomasloven/lovelace-card-mod) - required for legacy
-  compatibility paths and theme styling outside ordinary dashboard cards. Install it
-  as a frontend module as described by card-mod if you want settings/sidebar styling
-  to load everywhere.
-
-Install both through HACS before enabling this theme. The YAML will load without them,
-but much of the System 7 chrome will be missing.
+[UI eXtension (UIX)](https://github.com/Lint-Free-Technology/uix) provides the styling
+engine. UIX is required for reliable styling across Home Assistant shadow roots,
+dialogs, settings pages, rows, and cards. UIX is a drop-in replacement for card-mod
+through version 4.2.1 and
+directly supports the compatibility keys used by this theme, so
+card-mod is not required. Its original project is available
+[here](https://github.com/thomasloven/lovelace-card-mod) for reference.
 
 ## Supported custom cards
 
@@ -79,11 +71,10 @@ more-info dialogs, configuration pages, and navigation chrome are also styled.
 
 ## Installation with HACS
 
-### 1. Install the required frontend extensions
+### 1. Install UIX
 
-Install [UIX](https://github.com/Lint-Free-Technology/uix) and
-[card-mod](https://github.com/thomasloven/lovelace-card-mod) through HACS. Follow the
-card-mod documentation for its recommended frontend-module setup.
+Install [UIX](https://github.com/Lint-Free-Technology/uix) through HACS, add the UIX
+integration under **Settings > Devices & services**, and refresh Home Assistant.
 
 ### 2. Enable themes in Home Assistant
 
@@ -108,27 +99,18 @@ frontend:
 
 [![Open your Home Assistant instance and open this repository in HACS](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=skynet01&repository=homeassistant-macos-system7-theme&category=theme)
 
-### 4. Install the bundled fonts
+### 4. Add the bundled fonts
 
-HACS theme installation does not place document-level font assets in `/config/www`.
-Using the Terminal/SSH add-on, copy the three files from this repository into
-`/config/www/macintosh-eink/`. For release `v1.0.0`:
+HACS manages the theme YAML but does not register font files from theme repositories.
+No SSH or file copying is needed: open **Settings > Dashboards**, choose
+**Resources** from the three-dot menu, and add this URL as a **Stylesheet**:
 
-```sh
-mkdir -p /config/www/macintosh-eink
-curl -L https://raw.githubusercontent.com/skynet01/homeassistant-macos-system7-theme/v1.0.0/assets/Chicago.woff -o /config/www/macintosh-eink/Chicago.woff
-curl -L https://raw.githubusercontent.com/skynet01/homeassistant-macos-system7-theme/v1.0.0/assets/Geneva.ttf -o /config/www/macintosh-eink/Geneva.ttf
-curl -L https://raw.githubusercontent.com/skynet01/homeassistant-macos-system7-theme/v1.0.0/assets/fonts.css -o /config/www/macintosh-eink/fonts.css
+```url
+https://cdn.jsdelivr.net/gh/skynet01/homeassistant-macos-system7-theme@v1.0.1/assets/fonts.css
 ```
 
-Then add this dashboard resource as a **Stylesheet**:
-
-```text
-/local/macintosh-eink/fonts.css?v=1.0.0
-```
-
-The resource is what registers Chicago and Geneva at document level. Theme CSS inside
-shadow roots cannot provide a reusable global font registration.
+This versioned stylesheet loads the bundled Chicago and Geneva files directly from
+the release. Theme CSS alone cannot register a font across independent shadow roots.
 
 ### 5. Reload and select the theme
 
@@ -139,21 +121,17 @@ shadow roots cannot provide a reusable global font registration.
 
 ## Manual installation
 
-1. Copy `themes/macintosh_eink.yaml` and `themes/macintosh_eink_color.yaml` into a
-   directory included by `frontend.themes`.
-2. Copy `assets/Chicago.woff`, `assets/Geneva.ttf`, and `assets/fonts.css` to
-   `/config/www/macintosh-eink/`.
-3. Add `/local/macintosh-eink/fonts.css?v=1.0.0` as a Stylesheet dashboard resource.
-4. Install UIX and card-mod, reload themes, hard-refresh, and select a theme.
+1. Copy `themes/macos_system7.yaml` into a directory included by `frontend.themes`.
+2. Install and configure UIX.
+3. Add the versioned font stylesheet URL above as a dashboard Stylesheet resource.
+4. Reload themes, hard-refresh, and select a theme.
 
 ## Troubleshooting
 
-- **Chicago or Geneva is missing:** verify the three `/config/www/macintosh-eink/`
-  files, open `/local/macintosh-eink/fonts.css` directly, and hard-refresh.
-- **Cards look plain:** verify UIX and card-mod are loaded. UIX supplies most modern
-  shadow-root styling.
-- **Settings or the sidebar lose styling:** install card-mod as a frontend module,
-  following its official documentation, then restart Home Assistant.
+- **Chicago or Geneva is missing:** verify the versioned stylesheet is listed under
+  dashboard Resources, open its URL directly, and hard-refresh.
+- **Cards look plain:** verify UIX is installed, configured under Devices & services,
+  and loaded after the required Home Assistant restart.
 - **A custom card changed after an update:** custom cards and Home Assistant regularly
   change their internal DOM. Open an issue with the card name, version, and screenshot.
 - **E-ink refresh is slow:** the theme disables animation where possible, but dashboard
@@ -165,9 +143,8 @@ The visual direction was inspired by classic Macintosh System 7 and by
 [dmellok/tesserae](https://github.com/dmellok/tesserae), an excellent e-ink dashboard
 companion. Tesserae is a separate project; this theme does not contain its code.
 
-The implementation and iterative CSS archaeology were performed primarily by AI
-robots under human direction. Expect some selectors to be inelegant. The goal is a
-convincing, functional e-ink interface rather than pristine framework code.
+Most implementation and CSS iteration was performed by AI robots under human
+direction.
 
 ## Versioning
 
