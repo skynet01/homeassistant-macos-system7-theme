@@ -99,7 +99,6 @@ notices = File.read(NOTICES_PATH)
 license = File.read(LICENSE_PATH)
 validate_workflow = File.read(VALIDATE_WORKFLOW_PATH)
 release_workflow = File.read(RELEASE_WORKFLOW_PATH)
-assert(version == "1.0.1", "documentation correction release must be 1.0.1")
 assert(version.match?(/\A\d+\.\d+\.\d+\z/), "VERSION must use semantic versioning")
 assert(hacs == { "name" => "MacOS System 7 Theme", "filename" => "macos_system7.yaml" }, "HACS metadata must select the combined System 7 theme file")
 assert(readme.include?("@v#{version}/assets/fonts.css"), "README install URLs must follow VERSION")
@@ -596,7 +595,13 @@ theme_variants.each do |name, candidate|
   bar_value_surfaces.each do |key, bar_value_css|
     bar_value_rule = bar_value_css[/bar-card-value\s*\{([^\}]*)\}/m, 1]
     assert(bar_value_rule&.include?("font-family: var(--macintosh-title-font-family) !important"), "#{name} #{key} bar-card values must use Chicago")
-    assert(bar_value_rule&.include?("color: var(--macintosh-black) !important"), "#{name} #{key} bar-card values must remain black")
+    assert(bar_value_rule&.include?("color: var(--macintosh-black) !important"), "#{name} #{key} outside bar-card values must remain black")
+    assert(!bar_value_rule.include?("mix-blend-mode"), "#{name} #{key} outside values must not blend with the page")
+    inside_value_rule = declarations_for_exact_selector_group(bar_value_css, "bar-card-background bar-card-contentbar bar-card-value")
+    assert(inside_value_rule&.include?("color: #ffffff !important") && inside_value_rule.include?("mix-blend-mode: difference !important"), "#{name} #{key} inside values must invert over the fill")
+    fill_rule = declarations_for_exact_selector_group(bar_value_css, "bar-card-currentbar")
+    assert(fill_rule&.include?("opacity: 1 !important"), "#{name} #{key} fills must be opaque for readable inverted values")
+    assert(!fill_rule.match?(/(?:background|--bar-color):/), "#{name} #{key} must preserve configured fill colors and percentage masks")
   end
 end
 
@@ -606,7 +611,8 @@ assert(raw.include?(".header-bar"), "dialog header bar styling is missing")
 assert(raw.include?(".main"), "more-info title styling is missing")
 
 assert(theme["bar-card-border-radius"] == "4px", "bar rows must use rounded System 7 corners")
-assert(theme["bar-card-color"] != "#000000", "bar fill must use gray instead of flat black")
+assert(theme["bar-card-color"] == "#000000", "monochrome bars need black default fills for white inverted values")
+assert(color_theme["bar-card-color"] == "#0000aa", "color bars must keep their System 7 blue default")
 assert(theme.fetch("macintosh-progress-background").include?("repeating-conic-gradient"), "bar tracks must use a static dither pattern")
 assert(theme.fetch("macintosh-progress-fill").include?("repeating-conic-gradient"), "progress fills must use a darker static dither pattern")
 assert(theme.fetch("macintosh-progress-fill").include?("var(--macintosh-dark-gray)"), "progress fill dither must use a lighter dark-gray phase")
@@ -619,7 +625,7 @@ assert(raw.match?(/bar-card-backgroundbar\s*\{[^\}]*background:\s*var\(--macinto
 assert(!raw.match?(/bar-card-currentbar\s*\{[^\}]*background:/m), "bar-card currentbar must retain its native percentage-masked gradient")
 currentbar_block = raw[/bar-card-currentbar\s*\{([^\}]*)\}/m, 1]
 currentbar_opacity = currentbar_block&.match(/opacity:\s*([0-9.]+) !important/)&.captures&.first&.to_f
-assert(currentbar_opacity && currentbar_opacity.positive? && currentbar_opacity < 1, "bar-card fills must be lightened without replacing the percentage mask")
+assert(currentbar_opacity == 1, "bar-card fills must be opaque without replacing the percentage mask")
 assert(raw.match?(/:host\(bar-card\) ha-card[^\{]*\{[^\}]*box-shadow:\s*none !important/m), "bar-card must not receive a card shadow")
 assert(theme["ha-list-item-border-color"] == "transparent", "ordinary entity rows must not gain separator borders")
 assert(raw.include?(":host(bubble-card)"), "Bubble Card needs a scoped row treatment")

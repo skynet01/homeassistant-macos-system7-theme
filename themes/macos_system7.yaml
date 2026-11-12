@@ -30,9 +30,16 @@ MacOS System 7 eink theme:
         border-radius: var(--bar-card-border-radius) !important;
         overflow: visible !important;
       }
+      bar-card-currentbar {
+        opacity: 1 !important;
+      }
       bar-card-value {
         color: var(--macintosh-black) !important;
         font-family: var(--macintosh-title-font-family) !important;
+      }
+      bar-card-background bar-card-contentbar bar-card-value {
+        color: #ffffff !important;
+        mix-blend-mode: difference !important;
       }
       :host(bubble-card) {
         --bubble-border: none !important;
@@ -520,11 +527,15 @@ MacOS System 7 eink theme:
       }
       bar-card-currentbar {
         filter: none !important;
-        opacity: 0.72 !important;
+        opacity: 1 !important;
       }
       bar-card-value {
         color: var(--macintosh-black) !important;
         font-family: var(--macintosh-title-font-family) !important;
+      }
+      bar-card-background bar-card-contentbar bar-card-value {
+        color: #ffffff !important;
+        mix-blend-mode: difference !important;
       }
     "ha-button $": |
       [part~="base"] {
@@ -1582,9 +1593,16 @@ MacOS System 7 eink theme:
       border-radius: var(--bar-card-border-radius) !important;
       overflow: visible !important;
     }
+    bar-card-currentbar {
+      opacity: 1 !important;
+    }
     bar-card-value {
       color: var(--macintosh-black) !important;
       font-family: var(--macintosh-title-font-family) !important;
+    }
+    bar-card-background bar-card-contentbar bar-card-value {
+      color: #ffffff !important;
+      mix-blend-mode: difference !important;
     }
     :host(bubble-card) {
       --bubble-border: none !important;
@@ -1909,9 +1927,16 @@ MacOS System 7 eink theme:
         color: #000000 !important;
         font-family: var(--macintosh-body-font-family, GenevaSystem, Geneva, Verdana, "DejaVu Sans", sans-serif) !important;
       }
+      bar-card-currentbar {
+        opacity: 1 !important;
+      }
       bar-card-value {
         color: var(--macintosh-black) !important;
         font-family: var(--macintosh-title-font-family) !important;
+      }
+      bar-card-background bar-card-contentbar bar-card-value {
+        color: #ffffff !important;
+        mix-blend-mode: difference !important;
       }
       :host(text-divider-row) {
         color: var(--macintosh-black) !important;
@@ -2445,7 +2470,7 @@ MacOS System 7 eink theme:
   ha-card-header-color: "#000000"
   ha-card-background: "#f7f7f7"
   card-background-color: "#f7f7f7"
-  bar-card-color: "#666666"
+  bar-card-color: "#000000"
   bar-card-disabled-color: "#b8b8b8"
   bar-card-border-radius: "4px"
   paper-listbox-background-color: "#f7f7f7"

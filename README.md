@@ -57,7 +57,7 @@ for them when they are already used by a dashboard.
 | Custom card | Theme coverage |
 |---|---|
 | [Bubble Card](https://github.com/Clooos/Bubble-Card) | Rows, separators, sub-buttons, sliders, and camera/image buttons |
-| [Bar Card](https://github.com/custom-cards/bar-card) | Rounded dithered tracks, fills, values, and shadow removal |
+| [Bar Card](https://github.com/custom-cards/bar-card) | Rounded dithered tracks, inverted inside values, and shadow removal |
 | [Mini Graph Card](https://github.com/kalkih/mini-graph-card) | System 7 headers, Chicago values, graph surfaces, and header icons |
 | [Mini Media Player](https://github.com/kalkih/mini-media-player) | Slider knobs, controls, nested cards, and artwork contrast |
 | [Simple Weather Card](https://github.com/kalkih/simple-weather-card) | Chicago title/temperature and divider cleanup |
@@ -106,7 +106,7 @@ No SSH or file copying is needed: open **Settings > Dashboards**, choose
 **Resources** from the three-dot menu, and add this URL as a **Stylesheet**:
 
 ```url
-https://cdn.jsdelivr.net/gh/skynet01/homeassistant-macos-system7-theme@v1.0.1/assets/fonts.css
+https://cdn.jsdelivr.net/gh/skynet01/homeassistant-macos-system7-theme@v1.0.2/assets/fonts.css
 ```
 
 This versioned stylesheet loads the bundled Chicago and Geneva files directly from
